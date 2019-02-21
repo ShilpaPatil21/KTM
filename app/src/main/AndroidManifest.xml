@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="in.dealerservicecenter.ktm">
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/a02_rc_390"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:screenOrientation="nosensor"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+
+        android:theme="@style/AppTheme">
+        <activity android:name=".A03_Wallpaper"
+            android:label="KTM WallPaper">
+
+        </activity>
+        <activity android:name=".A02_KtmSpecification"  android:label="KTM SpeciFication"/>
+        <activity android:name=".A01_KTM_Model" android:label="KTM Latest Model" />
+        <activity
+            android:name=".FlashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+    </application>
+
+</manifest>

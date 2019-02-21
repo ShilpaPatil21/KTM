@@ -1,0 +1,2160 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".A02_KtmSpecification"
+    android:orientation="vertical"
+    android:background="#000">
+
+
+<ViewFlipper
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:id="@+id/vpage">
+</ViewFlipper>
+
+
+
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <!--Tab1 -->
+                        <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/back_layout"
+                            android:gravity="center"
+                            android:layout_margin="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ERGONOMICS - COMFORT"
+                                android:textColor="#fff"
+                                android:textStyle="bold"
+                                android:textSize="15dp"
+                                />
+                        </LinearLayout>
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ec_1">
+
+                                    <TableRow
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="5"
+                                        android:padding="5dp">
+
+
+                                        <ImageView
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:src="@drawable/a02_egc_rc390"
+                                            android:scaleType="fitXY"
+                                            android:id="@+id/ec_img1"
+                                            android:padding="5dp"/>
+
+                                        <TableLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:padding="5dp">
+
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:id="@+id/ec_big_1"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="HANDLEBAR"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                    android:textStyle="bold"
+                                                    android:textColor="#fff"/>
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/ec_sm_1"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="Racing Profile Bars"
+                                                    android:textColor="#fff"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:id="@+id/ec_dec1"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:text="The clip-on bars and strategically positioned switches contribute greatly to the bike’s sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner."
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                                    android:textColor="#fff" />
+
+
+                                            </TableRow>
+
+
+
+
+                                        </TableLayout>
+
+
+                                    </TableRow>
+
+                                </TableLayout>
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ec_2">
+
+                                    <TableRow
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="5"
+                                        android:padding="5dp">
+
+
+                                        <ImageView
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:src="@drawable/a02_seat_rc390"
+                                            android:scaleType="fitXY"
+                                            android:id="@+id/ec_img2"
+                                            android:padding="5dp"/>
+
+                                        <TableLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:padding="5dp">
+
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="SEATS"
+                                                    android:id="@+id/ec_bg_2"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                    android:textStyle="bold"
+                                                    android:textColor="#fff"/>
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:id="@+id/ec_sm_2"
+                                                    android:text="SuperSport Ergonomics"
+                                                    android:textColor="#fff"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:id="@+id/ec_dec2"
+                                                    android:text="The two-part seat offers first class, supersport ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a secure position, whilst also being high enough for circuit-style riding. The Pillion seat has been integrated into the bodywork so as not to compromise the supersport look of the KTM RC 390, whilst also ensuring excellent comfort for the passenger."
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                                    android:textColor="#fff" />
+
+
+                                            </TableRow>
+
+
+
+
+                                        </TableLayout>
+
+
+                                    </TableRow>
+
+                                </TableLayout>
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ec_3">
+
+                                    <TableRow
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="5"
+                                        android:padding="5dp">
+
+
+                                        <ImageView
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:src="@drawable/a02_rc_390windshield"
+                                            android:scaleType="fitXY"
+                                            android:id="@+id/ec_img3"
+                                            android:padding="5dp"/>
+
+                                        <TableLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:padding="5dp">
+
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="WINDSHIELD"
+                                                    android:id="@+id/ec_big_3"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                    android:textStyle="bold"
+                                                    android:textColor="#fff"/>
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="Adavance aerodynamic Protection"
+                                                    android:id="@+id/ec_sm_3"
+                                                    android:textColor="#fff"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:id="@+id/ec_dec3"
+                                                    android:text="The advanced design of the KTM RC 390's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road."
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                                    android:textColor="#fff" />
+
+
+                                            </TableRow>
+
+
+
+
+                                        </TableLayout>
+
+
+                                    </TableRow>
+
+                                </TableLayout>
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ec_4">
+
+                                    <TableRow
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="5"
+                                        android:padding="5dp">
+
+
+                                        <ImageView
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:src="@drawable/a02_footpage_rc390"
+                                            android:scaleType="fitXY"
+                                            android:id="@+id/ec_img4"
+                                            android:padding="5dp"/>
+
+                                        <TableLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:padding="5dp">
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="FOOTPEGS"
+                                                    android:id="@+id/ec_bg_4"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                    android:textStyle="bold"
+                                                    android:textColor="#fff"/>
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:id="@+id/ec_sm_4"
+                                                    android:text="Race - Ready Footpage"
+                                                    android:textColor="#fff"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                            </TableRow>
+                                            <TableRow
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:id="@+id/ec_dec4"
+                                                    android:text="Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles."
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                                    android:textColor="#fff" />
+
+
+                                            </TableRow>
+
+
+
+
+                                        </TableLayout>
+
+
+                                    </TableRow>
+
+                                </TableLayout>
+
+
+                            </LinearLayout>
+                        </ScrollView>
+
+                    </LinearLayout>
+                <!-- End Tab1 -->
+
+                <!-- Tab2 -->
+                        <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_layout"
+                        android:gravity="center"
+                        android:layout_margin="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TECHNICAL DETAILS"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            />
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="4"
+                                        android:text="ENGINE"
+                                        android:gravity="center"
+                                        android:background="#fff"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/colorPrimary"/>
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="DESIGN"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="1-cylinder, 4-stroke engine"
+                                        android:id="@+id/design"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="DISPLACEMENT"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="124.7 cm³"
+                                        android:id="@+id/displacement"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="BORE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="58 mm"
+                                        android:id="@+id/bore"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="STROKE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="47.2 mm"
+                                        android:id="@+id/stroke"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="POWER IN KW"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="11 kW"
+                                        android:id="@+id/power"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="STARTER"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Electric starter"
+                                        android:id="@+id/starter"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="LUBRICATION"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Wet sump"
+                                        android:id="@+id/lubrication"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="TRANSMISSION"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="6-speed"
+                                        android:id="@+id/transmission"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="COOLING"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Liquid cooled"
+                                        android:id="@+id/cooling"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="CLUTCH"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Wet multi-disc clutch, mechanically actuated"
+                                        android:id="@+id/clutch"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="EMS"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Bosch EMS"
+                                        android:id="@+id/ems"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="CO2 EMISSIONS"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="55.2 g/km"
+                                        android:id="@+id/c02"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="FUEL CONSUMPTION"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="2.42 l/100 km"
+                                        android:id="@+id/fuel"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="4"
+                                        android:text="CHASSIS"
+                                        android:gravity="center"
+                                        android:background="#fff"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/colorPrimary"/>
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="FRAME DESIGN"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Steel trellis frame, powder coated"
+                                        android:id="@+id/fdesign"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="FRONT SUSPENSION"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="WP upside-down Ø 43 mm"
+                                        android:id="@+id/fsuspension"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="REAR SUSPENSION"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="WP monoshock"
+                                        android:id="@+id/readsuspension"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="SUSPENSION TRAVEL (FRONT)"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="125 mm"
+                                        android:id="@+id/f_suspension_travel"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="SUSPENSION TRAVEL (REAR)"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="150 mm"
+                                        android:id="@+id/r_suspension_travel"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="FRONT BRAKE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Four-piston radial fixed calliper, brake disc"
+                                        android:id="@+id/front_brake"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="REAR BRAKE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Single-piston floating calliper, brake disc"
+                                        android:id="@+id/rare_break"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="FRONT BRAKE DISC DIAMETER"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="300 mm"
+                                        android:id="@+id/fbdd"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="REAR BRAKE DISC DIAMETER"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="230 mm"
+                                        android:id="@+id/rbdd"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4"
+                                    android:id="@+id/abs_r">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="ABS"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="Bosch 9MB two-channel ABS"
+                                        android:id="@+id/abs"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="CHAIN"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="X-Ring 5/8 x 1/4"
+                                        android:id="@+id/chain"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="STEERING HEAD ANGLE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="66.5 °"
+                                        android:id="@+id/steering"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="GROUND CLEARANCE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="178.5 mm"
+                                        android:id="@+id/ground_c"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="SEAT HEIGHT"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="178.5 mm"
+                                        android:id="@+id/seat_h"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="TANK CAPACITY (APPROX.)"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="178.5 mm"
+                                        android:id="@+id/tank"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="DRY WEIGHT"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Inverse"
+                                        android:textStyle="bold"
+                                        android:textColor="#fff"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="2"
+                                        android:text="178.5 mm"
+                                        android:id="@+id/dry_weight"
+                                        android:textColor="#fff"/>
+
+
+                                </TableRow>
+
+
+                            </TableLayout>
+
+
+                        </LinearLayout>
+                    </ScrollView>
+
+
+                </LinearLayout>
+                <!-- Tab2 -->
+
+                <!-- Tab3  -->
+                        <LinearLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_layout"
+                        android:gravity="center"
+                        android:layout_margin="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BODYWORK - GRAPHICS"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            />
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:src="@drawable/headlight_rc390"
+                                        android:scaleType="fitXY"
+                                        android:id="@+id/body_img1"
+                                        android:padding="5dp"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="HEADLIGHT"
+                                                android:id="@+id/title_big1"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="True superSport Headlight"
+                                                android:textColor="#fff"
+                                                android:id="@+id/title_small1"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:text="The powerful twin headlight provides superb visibility in low-light or dark conditions and perfectly matches the modern, supersport race look of the KTM RC 390."
+                                                android:id="@+id/desc1"
+                                                android:textColor="#fff" />
+
+
+                                        </TableRow>
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/bodypart_2">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:src="@drawable/instrument_rc_390"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"
+                                        android:id="@+id/body_img2"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="INSTRUMENT"
+                                                android:id="@+id/title_big2"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="Adavance LCD display"
+                                                android:textColor="#fff"
+                                                android:id="@+id/title_small2"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:text="A 100% digital LCD display has everything you would expect from a state-of-the-art KTM motorcycle, including engaged gear, fuel gauge and service reminder information. It also comes with an RPM alert to indicate the optimum moment for up-shifting, just like they have on the supersport racing machines."
+                                                android:id="@+id/desc2"
+                                                android:textColor="#fff" />
+
+
+                                        </TableRow>
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/bodypart_3">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:src="@drawable/instrument_rc_390"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"
+                                        android:id="@+id/body_img3"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:id="@+id/title_big3"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:textColor="#fff"
+                                                android:id="@+id/title_small3"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:id="@+id/desc3"
+                                                android:textColor="#fff" />
+
+
+                                        </TableRow>
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/bodypart_4">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:src="@drawable/instrument_rc_390"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"
+                                        android:id="@+id/body_img4"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:id="@+id/title_big4"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:textColor="#fff"
+                                                android:id="@+id/title_small4"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:id="@+id/desc4"
+                                                android:textColor="#fff" />
+
+
+                                        </TableRow>
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+
+
+                        </LinearLayout>
+                    </ScrollView>
+
+
+                </LinearLayout>
+                <!-- End Tab3 -->
+
+                <!--Tab4 -->
+                        <LinearLayout
+                    android:id="@+id/tab4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_layout"
+                        android:gravity="center"
+                        android:layout_margin="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mileage"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            />
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/person"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/m1"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="40Kmpl"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="Reported By Owners"
+                                                android:textColor="#fff"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                        </TableRow>
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/milage"
+                                        android:background="#fff"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/m2"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="52.75Kmpl"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="Average mileage among commuters"
+                                                android:textColor="#fff"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                        </TableRow>
+
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="5"
+                                    android:padding="5dp">
+
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/motorcycle"
+                                        android:scaleType="fitXY"
+                                        android:padding="5dp"/>
+
+                                    <TableLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3.5"
+                                        android:padding="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/m3"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="65%"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                                android:textStyle="bold"
+                                                android:textColor="#fff"/>
+
+
+                                        </TableRow>
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:id="@+id/m4"
+                                                android:layout_marginTop="5dp"
+                                                android:text="125 Duke has better mileage than 65% of commuters"
+                                                android:textColor="#fff"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                                        </TableRow>
+
+
+
+
+
+                                    </TableLayout>
+
+
+                                </TableRow>
+
+                            </TableLayout>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                </LinearLayout>
+                <!-- End Tab4 -->
+
+                <!--Tab5 -->
+                 <LinearLayout
+                    android:id="@+id/tab5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_layout"
+                        android:gravity="center"
+                        android:layout_margin="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="On-road prices in cities near Mumbai"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            />
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/table_main">
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="8"
+                                    android:padding="5dp">
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Panvel"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/panvel"
+                                            android:textColor="#fff"/>
+                                    <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Navi Mumbai"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/navi_mumbai"
+                                            android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="8"
+                                    android:padding="5dp">
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Thane"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/thane"
+                                            android:textColor="#fff"/>
+                                    <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Alibag"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/alibag"
+                                            android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="8"
+                                    android:padding="5dp">
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Vasai"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/vasai"
+                                            android:textColor="#fff"/>
+                                    <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Pen"
+                                            android:id="@+id/pen_Kalyan"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/pen"
+                                            android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="8"
+                                    android:padding="5dp">
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Dombivali"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/dombivali"
+                                            android:textColor="#fff"/>
+                                    <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:text="Wadkhal"
+                                            android:id="@+id/wh_un"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/wadkhal"
+                                            android:textColor="#fff"/>
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:weightSum="8"
+                                    android:padding="5dp">
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1"
+                                            android:text="Bhiwandi"
+                                            android:textStyle="bold"
+                                            android:textColor="#fff"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="2"
+                                            android:id="@+id/bhiwandi"
+                                            android:textColor="#fff"/>
+
+
+
+                                </TableRow>
+
+                            </TableLayout>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                </LinearLayout>
+                <!-- End Tab5 -->
+
+
+            </FrameLayout>
+        </LinearLayout>
+
+
+    </TabHost>
+    </LinearLayout>
+
+
