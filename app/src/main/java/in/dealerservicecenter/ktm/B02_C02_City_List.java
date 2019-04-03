@@ -1,10 +1,10 @@
 package in.dealerservicecenter.ktm;
 
-public class B03_City_List {
+public class B02_C02_City_List {
 
     private  String cityname,cid;
 
-    public B03_City_List(String cityname , String cid) {
+    public B02_C02_City_List(String cityname , String cid) {
         this.cityname = cityname; this.cid = cid;
     }
 

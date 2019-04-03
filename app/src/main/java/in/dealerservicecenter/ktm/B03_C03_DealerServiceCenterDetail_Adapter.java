@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class B04_DealerDetail_Adapter extends RecyclerView.Adapter<B04_DealerDetail_Adapter.Viewholder>  {
+public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adapter<B03_C03_DealerServiceCenterDetail_Adapter.Viewholder>  {
 
 
-    private List<B04_DealerDetail_List> b04DealerDetail_lists;
+    private List<B03_C03_DealerServiceCenterDetail_List> b04DealerDetail_lists;
     private Context context;
 
 
-    public B04_DealerDetail_Adapter(List<B04_DealerDetail_List> b04DealerDetail_list, Context context) {
+    public B03_C03_DealerServiceCenterDetail_Adapter(List<B03_C03_DealerServiceCenterDetail_List> b04DealerDetail_list, Context context) {
         this.b04DealerDetail_lists = b04DealerDetail_list;
         this.context = context;
 
@@ -32,13 +32,13 @@ public class B04_DealerDetail_Adapter extends RecyclerView.Adapter<B04_DealerDet
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.b04_dealer_detail_list,parent,false);
+                .inflate(R.layout.b03_c03_dealer_detail_list,parent,false);
         return  new Viewholder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final B04_DealerDetail_List b04DealerDetail_list = b04DealerDetail_lists.get(i);
+        final B03_C03_DealerServiceCenterDetail_List b04DealerDetail_list = b04DealerDetail_lists.get(i);
 
         viewholder.Txtname.setText(capitalize( b04DealerDetail_list.getBname()));
         viewholder.Txtadd.setText(capitalize(b04DealerDetail_list.getBadd()) + "   " + b04DealerDetail_list.getPincode());

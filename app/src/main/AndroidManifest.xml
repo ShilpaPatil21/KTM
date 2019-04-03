@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".A00_MainActivity"
             android:label="@string/title_activity_main">
         </activity>
 
@@ -24,20 +24,20 @@
             android:value="@string/YOUR_ADMOB_APP_ID" />
 
         <activity
-            android:name=".A03_Wallpaper"
+            android:name=".D01_Wallpaper"
             android:label="KTM WallPaper" />
         <activity
             android:name=".A02_KtmSpecification"
             android:label="KTM SpeciFication" />
         <activity
-            android:name=".B03_CityName"
+            android:name=".B02_CityName"
             android:label="KTM SpeciFication" />
         <activity
-            android:name=".B04_Dealer_detail"
+            android:name=".B03_C03_DealerServicecenter_detail"
             android:label="KTM SpeciFication" />
 
         <activity
-            android:name=".FlashScreen"
+            android:name=".A00_FlashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

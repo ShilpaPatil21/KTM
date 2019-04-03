@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class FlashScreen extends AppCompatActivity {
+public class A00_FlashScreen extends AppCompatActivity {
 private static int SPLASH_TIME_OUT = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ private static int SPLASH_TIME_OUT = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(FlashScreen.this, MainActivity.class);
+                Intent i = new Intent(A00_FlashScreen.this, A00_MainActivity.class);
                 startActivity(i);
                 finish();
             }

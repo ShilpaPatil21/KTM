@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,12 +26,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class A02_ServiceCenter extends A00_FragmentBaseClass {
+public class C01_ServiceCenter extends A00_FragmentBaseClass {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.b02_statename_activity, container, false);
+        return inflater.inflate(R.layout.b01_statename_fragment, container, false);
     }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class A02_ServiceCenter extends A00_FragmentBaseClass {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        NoInternet = (View)this.getView().findViewById(R.id.nointernet);
+
         if (CheckInternet.isInternetAvailable(getContext())) {
             HttpsTrustManager.allowAllSSL(); //SSl
 
@@ -49,13 +51,14 @@ public class A02_ServiceCenter extends A00_FragmentBaseClass {
             State_recyclerview.setHasFixedSize(true);
             State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            b02_state_lists = new ArrayList<>();
+            b01C01_state_lists = new ArrayList<>();
 
             //---------------------Data From Server Call---------------------------------//
             LoadStatedata();
 
         } else {
-            Toast.makeText(getContext(), "No internet", Toast.LENGTH_LONG).show();
+            NoInternet.setVisibility(View.VISIBLE);
+            Snackbar.make(getView(), "No InterNet Please Turn On Mobile Data Or Hotspot", Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -78,13 +81,13 @@ public class A02_ServiceCenter extends A00_FragmentBaseClass {
                                 for(int i=0;i<Sarray.length();i++)
                                 {
                                     JSONObject J = Sarray.getJSONObject(i);
-                                    B02_State_List sitem = new B02_State_List(
+                                    B01_C01_State_List sitem = new B01_C01_State_List(
                                             J.getString("state"),
                                             J.getString("id")
                                     );
-                                    b02_state_lists.add(sitem);
+                                    b01C01_state_lists.add(sitem);
                                 }
-                                state_adapter = new B02_StateAdapter(b02_state_lists,getContext(),"ServiceCenter");
+                                state_adapter = new B01_C01_StateAdapter(b01C01_state_lists,getContext(),"ServiceCenter");
                                 State_recyclerview.setAdapter(state_adapter);
                                 State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
                             }else

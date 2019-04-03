@@ -4,14 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -27,16 +21,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class B03_CityName extends A00_ActivityBaseClass {
+public class B02_CityName extends A00_ActivityBaseClass {
 Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.b03_cityname_activity);
+        setContentView(R.layout.b02_c02_cityname_activity);
 
         if(CheckInternet.isInternetAvailable(this)) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,14 +78,14 @@ Context context = this;
 
                                     JSONObject c = carray.getJSONObject(i);
 
-                                    B03_City_List citem = new B03_City_List(
+                                    B02_C02_City_List citem = new B02_C02_City_List(
                                             c.getString("city"),
                                             c.getString("id")
                                     );
 
                                     b03City_lists.add(citem);
                                 }
-                                City_adapter = new B03_CityAdapter(b03City_lists, getApplicationContext(),state_name,Sid,type);
+                                City_adapter = new B02_C02_CityAdapter(b03City_lists, getApplicationContext(),state_name,Sid,type);
                                 City_recyclerview.setAdapter(City_adapter);
                         }else
                         {
@@ -111,7 +102,7 @@ Context context = this;
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(B03_CityName.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(B02_CityName.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });

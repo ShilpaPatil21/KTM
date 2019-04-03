@@ -1,10 +1,10 @@
 package in.dealerservicecenter.ktm;
 
-public class B04_DealerDetail_List {
+public class B03_C03_DealerServiceCenterDetail_List {
 
     private  String bname,bslug,pincode,badd,bcontact,bemail,btitle,bcontact_person;
 
-    public B04_DealerDetail_List(String bname , String bslug, String badd , String pincode , String  bcontact , String bemail , String btitle , String contact_person) {
+    public B03_C03_DealerServiceCenterDetail_List(String bname , String bslug, String badd , String pincode , String  bcontact , String bemail , String btitle , String contact_person) {
         this.bname = bname;
         this.bslug = bslug;
         this.badd = badd;

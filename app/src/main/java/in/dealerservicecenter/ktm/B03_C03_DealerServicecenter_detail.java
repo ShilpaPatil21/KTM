@@ -4,15 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,24 +20,21 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class B04_Dealer_detail extends A00_ActivityBaseClass {
+public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 String UrlDataKtm="";
+String Title_Nodata;
     Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.b04_dealer_detail_activity);
+        setContentView(R.layout.b03_c03_dealer_detail_activity);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -74,23 +66,27 @@ String UrlDataKtm="";
         if(type.equals("Dealer")){
             UrlDataKtm = B04_URLData_DD;
             getSupportActionBar().setTitle("Dealer Details");
+            Title_Nodata= "There Is No Dealer Detail For "+state_name+ " Of "+cityname;
+
         }else if(type.equals("Servicecenter")){
             UrlDataKtm = B04_URLData_SS;
             getSupportActionBar().setTitle("Service Center Details");
+            Title_Nodata= "There Is No Service Center Detail For "+state_name+ " Of "+cityname;
+
         }
         Log.d("type",type);
         LoadDealerDetailData();
     }
     // FOR SEARCHING THE VALUE
     private void filter(String text) {
-        ArrayList<B04_DealerDetail_List> filteredList = new ArrayList<>();
+        ArrayList<B03_C03_DealerServiceCenterDetail_List> filteredList = new ArrayList<>();
 
-        for (B04_DealerDetail_List sitem : b04DealerDetail_lists) {
+        for (B03_C03_DealerServiceCenterDetail_List sitem : b04DealerDetail_lists) {
             if (sitem.getBname().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(sitem);
             }
         }
-        Dealer_adapter = new B04_DealerDetail_Adapter(filteredList, getApplicationContext());
+        Dealer_adapter = new B03_C03_DealerServiceCenterDetail_Adapter(filteredList, getApplicationContext());
         Dealer_recyclerview.setAdapter(Dealer_adapter);
     }
 
@@ -113,7 +109,7 @@ String UrlDataKtm="";
 
                                 JSONObject c = carray.getJSONObject(i);
                                 // Toast.makeText(A03_StateCity.this, c.getString("id"), Toast.LENGTH_SHORT).show();
-                                B04_DealerDetail_List citem = new B04_DealerDetail_List(
+                                B03_C03_DealerServiceCenterDetail_List citem = new B03_C03_DealerServiceCenterDetail_List(
                                         c.getString("name"),
                                         c.getString("slug"),
                                         c.getString("address"),
@@ -126,7 +122,7 @@ String UrlDataKtm="";
 
                                 b04DealerDetail_lists.add(citem);
                             }
-                            Dealer_adapter = new B04_DealerDetail_Adapter(b04DealerDetail_lists, getApplicationContext());
+                            Dealer_adapter = new B03_C03_DealerServiceCenterDetail_Adapter(b04DealerDetail_lists, getApplicationContext());
                             Dealer_recyclerview.setAdapter(Dealer_adapter);
 
                             // Add Call---
@@ -134,9 +130,9 @@ String UrlDataKtm="";
 
                         }else
                         {
-//                            Title_Nodata= "There Is No Dealer Detail For "+state_name+ " Of "+cityname;
-//                            NodataFound(context,Title_Nodata);
-                            Toast.makeText(context, "No data sorry", Toast.LENGTH_SHORT).show();
+                            cname1.setVisibility(View.GONE);
+                            NodataFound(context,Title_Nodata);
+
                         }
 
                         } catch (JSONException e) {
@@ -147,7 +143,7 @@ String UrlDataKtm="";
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(B04_Dealer_detail.this, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(B03_C03_DealerServicecenter_detail.this, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
         stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));

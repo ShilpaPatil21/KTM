@@ -1,6 +1,6 @@
 package in.dealerservicecenter.ktm;
 
-public class A03_KtmWallpaper_List {
+public class D01_KtmWallpaper_List {
 
     private  String PName;
     private  int pimg,pid;
@@ -20,7 +20,7 @@ public class A03_KtmWallpaper_List {
 
 
 
-    public A03_KtmWallpaper_List(int pid, String pName, int pimg) {
+    public D01_KtmWallpaper_List(int pid, String pName, int pimg) {
 
         this.PName = pName;
         this.pimg = pimg;

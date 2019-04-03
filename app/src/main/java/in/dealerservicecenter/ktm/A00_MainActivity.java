@@ -1,17 +1,17 @@
 package in.dealerservicecenter.ktm;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
-    private TextView mTextMessage;
+public class A00_MainActivity extends AppCompatActivity {
+    boolean doubleBackToExitPressedOnce = false;
     Fragment fragment = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     return true;
                 case R.id.navigation_dashboard:
-                    fragment = new B02_StateName();
+                    fragment = new B01_StateName();
                     if(fragment!=null)
                     {
                         FragmentManager manager = getSupportFragmentManager();
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_notifications:
-                    fragment = new A02_ServiceCenter();
+                    fragment = new C01_ServiceCenter();
                     if(fragment!=null)
                     {
                         FragmentManager manager = getSupportFragmentManager();
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.a00_activity_main);
 
       //  mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -67,6 +67,27 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_frame,fragment,fragment.getTag()).commit();
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+
+        Snackbar.make(findViewById(android.R.id.content), "Please click BACK again to exit", Snackbar.LENGTH_LONG).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
 }

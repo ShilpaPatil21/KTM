@@ -4,20 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -43,7 +40,7 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ktm_list,parent,false);
+                .inflate(R.layout.a01_ktm_list,parent,false);
         return  new Viewholder(v);
     }
 

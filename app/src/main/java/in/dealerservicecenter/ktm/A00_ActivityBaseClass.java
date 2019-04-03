@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
 
@@ -21,7 +22,7 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
     RecyclerView.Adapter City_adapter;
     TextView cname1;
     public   String B03_URLData = "https://www.dealerservicecenter.in/backend/api/get_state_city_list/";
-    public List<B03_City_List> b03City_lists;
+    public List<B02_C02_City_List> b03City_lists;
 
     String S_id,C_id,cityname;
     RecyclerView Dealer_recyclerview;
@@ -35,7 +36,7 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
     public   String B04_URLData_DD = "https://www.dealerservicecenter.in/backend/api/get_product_dea_serv/dd/1638/328/";
     public   String B04_URLData_SS = "https://www.dealerservicecenter.in/backend/api/get_product_dea_serv/ss/1638/328/";
 
-    public List<B04_DealerDetail_List> b04DealerDetail_lists;
+    public List<B03_C03_DealerServiceCenterDetail_List> b04DealerDetail_lists;
 
 
 
@@ -54,6 +55,26 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void NodataFound(final Context context,final String Title_Nodata){
+        nodata.setVisibility(View.VISIBLE);
+        TextView back_btn = (TextView) findViewById(R.id.back_btn);
+        TextView t1 = (TextView) findViewById(R.id.title_data);
+        t1.setText(Title_Nodata);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckInternet.isInternetAvailable(context)) //if connection available
+                {
+                    onBackPressed();
+                } else {
+                    //no connection
+                    Toast.makeText(context, "No Internet Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
 }

@@ -3,12 +3,8 @@ package in.dealerservicecenter.ktm;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -23,21 +19,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class A03_KtmWallpaper_Adapter extends RecyclerView.Adapter<A03_KtmWallpaper_Adapter.Viewholder>  {
+public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpaper_Adapter.Viewholder>  {
 
-    private List<A03_KtmWallpaper_List> a03_ktmWallpaper_lists;
+    private List<D01_KtmWallpaper_List> d01_ktmWallpaper_lists;
     private Context context;
 
 
-    public A03_KtmWallpaper_Adapter(Context context, List<A03_KtmWallpaper_List> a03_ktmWallpaper_lists) {
-        this.a03_ktmWallpaper_lists = a03_ktmWallpaper_lists;
+    public D01_KtmWallpaper_Adapter(Context context, List<D01_KtmWallpaper_List> d01_ktmWallpaper_lists) {
+        this.d01_ktmWallpaper_lists = d01_ktmWallpaper_lists;
         this.context = context;
 
 
@@ -46,16 +41,16 @@ public class A03_KtmWallpaper_Adapter extends RecyclerView.Adapter<A03_KtmWallpa
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.wallpaper_list,parent,false);
+                .inflate(R.layout.d01_wallpaper_list,parent,false);
         return  new Viewholder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final A03_KtmWallpaper_List a03_ktmWallpaper_list= a03_ktmWallpaper_lists.get(i);
+        final D01_KtmWallpaper_List d01_ktmWallpaper_list = d01_ktmWallpaper_lists.get(i);
 
 
-            viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(a03_ktmWallpaper_list.getPimg()))));
+            viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(d01_ktmWallpaper_list.getPimg()))));
 
 
         viewholder.PImage.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +61,7 @@ public class A03_KtmWallpaper_Adapter extends RecyclerView.Adapter<A03_KtmWallpa
 
 
 
-                        String fnm = a03_ktmWallpaper_list.getPName(); //  this is image file name
+                        String fnm = d01_ktmWallpaper_list.getPName(); //  this is image file name
                         String PACKAGE_NAME = context.getPackageName();
                         int imgId = context.getResources().getIdentifier(PACKAGE_NAME+":drawable/"+fnm , null, null);
 
@@ -76,7 +71,7 @@ public class A03_KtmWallpaper_Adapter extends RecyclerView.Adapter<A03_KtmWallpa
                         File dir = new File(file + "/KTM WallPaper/");
                         dir.mkdirs();
 
-                        File file1 = new File(dir, a03_ktmWallpaper_list.getPName()+".jpg");
+                        File file1 = new File(dir, d01_ktmWallpaper_list.getPName()+".jpg");
                         Toast.makeText(context, "Downloading...", Toast.LENGTH_SHORT).show();
 
                         OutputStream outputStream = null;
@@ -101,7 +96,7 @@ public class A03_KtmWallpaper_Adapter extends RecyclerView.Adapter<A03_KtmWallpa
     }
     @Override
     public int getItemCount() {
-        return a03_ktmWallpaper_lists.size();
+        return d01_ktmWallpaper_lists.size();
     }
 
     public  class  Viewholder extends  RecyclerView.ViewHolder{

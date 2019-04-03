@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
@@ -21,14 +20,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class B02_StateAdapter extends RecyclerView.Adapter<B02_StateAdapter.Viewholder>  {
+public class B01_C01_StateAdapter extends RecyclerView.Adapter<B01_C01_StateAdapter.Viewholder>  {
     private InterstitialAd mInterstitialAd;
 
-    private List<B02_State_List> stateLists;
+    private List<B01_C01_State_List> stateLists;
     private Context context;
     public String Type;
 
-    public B02_StateAdapter(List<B02_State_List> stateLists, Context context, String Type) {
+    public B01_C01_StateAdapter(List<B01_C01_State_List> stateLists, Context context, String Type) {
         this.stateLists = stateLists;
         this.context = context;
         this.Type= Type;
@@ -41,13 +40,13 @@ public class B02_StateAdapter extends RecyclerView.Adapter<B02_StateAdapter.View
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.b02_state_list,parent,false);
+                .inflate(R.layout.b01_c01_state_list,parent,false);
         return  new Viewholder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final B02_State_List stateList = stateLists.get(i);
+        final B01_C01_State_List stateList = stateLists.get(i);
         MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
         mInterstitialAd = new InterstitialAd(context);
         mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
@@ -63,7 +62,7 @@ public class B02_StateAdapter extends RecyclerView.Adapter<B02_StateAdapter.View
                 try {
                     if(CheckInternet.isInternetAvailable(context)) //if connection available
                     {
-                                Intent intent = new Intent(context, B03_CityName.class);
+                                Intent intent = new Intent(context, B02_CityName.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                                 intent.putExtra("sid", stateList.getSid());
                                 intent.putExtra("state_name", stateList.getStatename());

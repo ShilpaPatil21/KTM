@@ -6,45 +6,38 @@
     android:gravity="center"
     android:padding="20dp">
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/nointernetLv"
-        android:gravity="center"
-        android:padding="15dp">
+        android:gravity="center">
 
         <ImageView
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/motorcycle_no"/>
+            android:src="@drawable/nointernet"/>
 
         <TextView
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/title_data"
-            android:text="There is No Dealer Center"
-            android:textColor="#FFFFFF"
+            android:text="Internet Not Avaliable "
+            android:textColor="#f15f6a"
             android:gravity="center"
             style="@style/Casual"
             android:textStyle="bold"
-            android:textSize="20dp"/>
-
+            android:textSize="30dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Please Turn On Mobile Data or Wifi "
+            android:textColor="#1ccc00"
             android:gravity="center"
             style="@style/Casual"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@drawable/back"
-            android:text="BACK"
-            android:textSize="20dp"
-            android:id="@+id/back_btn"
-            android:textColor="@color/colorPrimary" />
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
     </LinearLayout>
 </LinearLayout>

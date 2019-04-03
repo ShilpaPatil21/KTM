@@ -1,10 +1,10 @@
 package in.dealerservicecenter.ktm;
 
-public class B02_State_List {
+public class B01_C01_State_List {
 
     private  String statename,sid;
 
-    public B02_State_List(String statename , String Sid) {
+    public B01_C01_State_List(String statename , String Sid) {
         this.statename = statename; this.sid = Sid;
     }
 
