@@ -1,5 +1,6 @@
 package in.dealerservicecenter.ktm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -8,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class A00_MainActivity extends AppCompatActivity {
@@ -88,6 +91,29 @@ public class A00_MainActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_item_one) {
+            try {
+
+                Intent intent = new Intent(getApplicationContext(), D01_Wallpaper.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(intent);
+                return true;
+            }catch (Exception ex){
+                Log.e("Intent",ex.getMessage());
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

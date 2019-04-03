@@ -18,18 +18,5 @@
     <string name="title_notifications">Service-center</string>
 
 
-    <style name="Casual">
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">casual</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:text">Casual</item>
-    </style>
-
-    <style name="Cursive">
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">cursive</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:text">Cursive</item>
-    </style>
 
 </resources>
