@@ -1,31 +1,61 @@
 package in.dealerservicecenter.ktm;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class A01_KTM_Model extends AppCompatActivity {
+public class A01_KTM_Model extends Fragment {
     List<A01_KtmDetail_List> productList;
-
+    private AdView mAdView;
+   // Context context = this;
     //the recyclerview
     RecyclerView recyclerView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-            setContentView(R.layout.a01_ktm_model);
 
-           //getting the recyclerview from xml
-        recyclerView = (RecyclerView) findViewById(R.id.ktmmodel);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.a01_ktm_model, container, false);
+    }
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //you can set the title for your toolbar here for different fragments different titles
+        getActivity().setTitle("Ktm Model");
+    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        //getting the recyclerview from xml
+        recyclerView = (RecyclerView)this.getView().findViewById(R.id.ktmmodel);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mAdView =getView().findViewById(R.id.adView);
+        //-------------- BANNER ADD ------------------------//
+        Add_Banner();
 
         //initializing the productlist
         productList = new ArrayList<>();
@@ -88,33 +118,55 @@ public class A01_KTM_Model extends AppCompatActivity {
 
         //creating recyclerview adapter
 
-        A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(this, productList);
+        A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(getContext(), productList);
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
 
-
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public void Add_Banner(){
 
-        if (id == R.id.action_item_one) {
-            try {
+        AdView adView = new AdView(getContext());
+        adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
 
-                Intent intent = new Intent(getApplicationContext(), A03_Wallpaper.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                startActivity(intent);
-                return true;
-            }catch (Exception ex){
-                Log.e("Intent",ex.getMessage());
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
+                .build();
+
+
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
             }
-        }
-        return super.onOptionsItemSelected(item);
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
+
     }
+
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">KTM</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Settings</string>
@@ -7,4 +7,29 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
+
+
+    <string name="YOUR_ADMOB_APP_ID">ca-app-pub-4662457729112553~5720713624</string>
+    <string name="YOUR_ADMOB_UNIT_ID">ca-app-pub-4662457729112553/9847660890</string>
+    <string name="YOUR_ADBANNER_UNIT_ID">ca-app-pub-4662457729112553/4129619720</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Model</string>
+    <string name="title_dashboard">Dealer</string>
+    <string name="title_notifications">Service-center</string>
+
+
+    <style name="Casual">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">casual</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">Casual</item>
+    </style>
+
+    <style name="Cursive">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">cursive</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">Cursive</item>
+    </style>
+
 </resources>

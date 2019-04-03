@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".A01_KTM_Model"
-    android:background="#000">
+    android:background="@color/colorBlack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -13,4 +18,20 @@
             android:id="@+id/ktmmodel">
 
         </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+
+                <!--Add By google-->
+                        <com.google.android.gms.ads.AdView
+                            android:layout_marginTop="10dp"
+                            xmlns:ads="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/adView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentBottom="true"
+                            ads:adSize="MEDIUM_RECTANGLE"
+                            ads:adUnitId="@string/YOUR_ADBANNER_UNIT_ID">
+                        </com.google.android.gms.ads.AdView>
+                <!--Add By google-->
+
+        </LinearLayout>
+</ScrollView>

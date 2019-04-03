@@ -15,7 +15,7 @@ private static int SPLASH_TIME_OUT = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(FlashScreen.this, A01_KTM_Model.class);
+                Intent i = new Intent(FlashScreen.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

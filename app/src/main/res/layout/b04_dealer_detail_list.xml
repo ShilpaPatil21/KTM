@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:id="@+id/linearlycity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lvbname">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtname"
+                    android:textSize="18dp"
+                    android:background="#ff704d"
+                    style="@style/Casual"
+                    android:text="Name"
+                    android:textColor="@color/colorwhite"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lvbslug">
+                <TextView
+                    android:layout_width="30dp"
+                    android:padding="7dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bslug"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtslug"
+                    android:padding="7dp"
+                    android:textSize="15dp"
+                    android:text="Slug"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lvbadd">
+                <TextView
+                    android:layout_width="30dp"
+                    android:padding="7dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baddress"/>
+
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:textSize="15sp"
+                    android:maxLines="2"
+                    android:id="@+id/txtadress"
+                    android:padding="7dp"
+                    android:text="address"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lvbcontact">
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:background="@drawable/bcontact"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtcontect"
+                    android:padding="7dp"
+                    android:textSize="15dp"
+                    android:text="Contact" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lvbemail">
+                <TextView
+                    android:layout_width="30dp"
+                    android:padding="7dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bemail"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtemail"
+                    android:padding="7dp"
+                    android:textSize="15dp"
+                    android:text="Email"
+                    android:clickable="true"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

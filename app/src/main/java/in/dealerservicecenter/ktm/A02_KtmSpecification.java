@@ -2,6 +2,8 @@ package in.dealerservicecenter.ktm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +14,20 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+
 public class A02_KtmSpecification extends AppCompatActivity {
-String kid,kname;
-Context context = this;
-TextView m1;
+    String kid,kname;
+    Context context = this;
+    private AdView mAdView;
+    TextView m1;
     TextView m2;
     TextView m3;
     TextView m4;
-ViewFlipper viewPager;
+    ViewFlipper viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,15 +80,11 @@ ViewFlipper viewPager;
         host.addTab(spec);
 
 
-            //        //Tab 3
-            spec = host.newTabSpec("Mileage");
-            spec.setContent(R.id.tab4);
-            spec.setIndicator("", getResources().getDrawable(R.drawable.icon_5));
-            host.addTab(spec);
-
-
-
-
+        //        //Tab 3
+        spec = host.newTabSpec("Mileage");
+        spec.setContent(R.id.tab4);
+        spec.setIndicator("", getResources().getDrawable(R.drawable.icon_5));
+        host.addTab(spec);
 
 
         /*----------------------END TAB HOST -------------------------------------------*/
@@ -509,6 +513,7 @@ ViewFlipper viewPager;
             image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_2));
             image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_3));
             image_b4.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_4));
+
             t1.setText("DESIGN");
             s1.setText("Pure BEAST style");
             d1.setText("At first you notice that LED headlight. That aggressive front. That predatory stance. When you come closer, you feel its steel fuel tank and multiple high-quality cast parts. In the end you realize that the design and production standards of this bike were set sky-high. Just like its big brother, the KTM 1290 SUPER DUKE R, the KTM 125 DUKE looks like a naked, angry, untamed little beast.");
@@ -669,8 +674,6 @@ ViewFlipper viewPager;
             de4.setText("Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles.");
         }
 
-
-
     }
     public static void setTabColor(TabHost tabhost) {
 
@@ -697,6 +700,49 @@ ViewFlipper viewPager;
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    public void Add_Banner(){
+        AdView adView = new AdView(context);
+        adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
+                .build();
+
+
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
+
     }
 
 }
