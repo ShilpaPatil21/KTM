@@ -1,5 +1,6 @@
 package in.dealerservicecenter.ktm;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +36,8 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
     TextView nodata_msg;
 
     View nodata;
+    ProgressDialog progressDialog;
+    Context context = this;
 
     AdView mAdView1,mAdView; // add
 

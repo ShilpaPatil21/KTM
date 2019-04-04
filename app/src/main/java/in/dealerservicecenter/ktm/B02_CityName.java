@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class B02_CityName extends A00_ActivityBaseClass {
-Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ Context context = this;
         if(CheckInternet.isInternetAvailable(this)) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+                progressDialog = new ProgressDialog(this);
 
                 nodata = findViewById(R.id.nodata);
                 Intent i = getIntent();
@@ -64,43 +64,49 @@ Context context = this;
 
 
     private  void  LoadCityData(){
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+
         progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
         progressDialog.show();
         StringRequest stringrequest  = new StringRequest(Request.Method.GET, B03_URLData + Sid,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-
-
                         try {
-                            if(!response.equals("[]")) {
-                                JSONArray carray = new JSONArray(response);
-                                for (int i=0;i<carray.length();i++)
-                                {
+                            if ((progressDialog != null) && progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        } catch (final IllegalArgumentException e) {
+                            // Handle or log or ignore
+                        } catch (final Exception e) {
+                            // Handle or log or ignore
+                        } finally {
 
-                                    JSONObject c = carray.getJSONObject(i);
+                            try {
+                                if (!response.equals("[]")) {
+                                    JSONArray carray = new JSONArray(response);
+                                    for (int i = 0; i < carray.length(); i++) {
 
-                                    B02_C02_City_List citem = new B02_C02_City_List(
-                                            c.getString("city"),
-                                            c.getString("id")
-                                    );
+                                        JSONObject c = carray.getJSONObject(i);
 
-                                    b03City_lists.add(citem);
+                                        B02_C02_City_List citem = new B02_C02_City_List(
+                                                c.getString("city"),
+                                                c.getString("id")
+                                        );
+
+                                        b03City_lists.add(citem);
+                                    }
+                                    City_adapter = new B02_C02_CityAdapter(b03City_lists, getApplicationContext(), state_name, Sid, type);
+                                    City_recyclerview.setAdapter(City_adapter);
+                                } else {
+                                    NodataFound(context, "Currently We Don't Have City Name !..");
+
                                 }
-                                City_adapter = new B02_C02_CityAdapter(b03City_lists, getApplicationContext(),state_name,Sid,type);
-                                City_recyclerview.setAdapter(City_adapter);
-                        }else
-                        {
-                            NodataFound(context,"Currently We Don't Have City Name !..");
 
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog = null;
                         }
-
-                    } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
                     }
                 },
                 new Response.ErrorListener() {

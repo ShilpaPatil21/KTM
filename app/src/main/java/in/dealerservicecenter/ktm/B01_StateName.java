@@ -26,7 +26,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class B01_StateName extends A00_FragmentBaseClass {
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class B01_StateName extends A00_FragmentBaseClass {
             State_recyclerview.setHasFixedSize(true);
             State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
+            progressDialog = new ProgressDialog(getContext());
             b01C01_state_lists = new ArrayList<>();
            // NoInternet.findViewById(View.GONE);
             //---------------------Data From Server Call---------------------------------//
@@ -66,41 +65,44 @@ public class B01_StateName extends A00_FragmentBaseClass {
 
     //---------------------Data From Server ---------------------------------//
     private  void  LoadStatedata(){
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+
         progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
         progressDialog.show();
-
-
         StringRequest stringrequest  = new StringRequest(Request.Method.GET, B02_URLData,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-
                         try {
-                            if(!response.equals("[]")) {
-                                JSONArray Sarray = new JSONArray(response);
-                                for(int i=0;i<Sarray.length();i++)
-                                {
-                                    JSONObject J = Sarray.getJSONObject(i);
-                                    B01_C01_State_List sitem = new B01_C01_State_List(
-                                            J.getString("state"),
-                                            J.getString("id")
-                                    );
-                                    b01C01_state_lists.add(sitem);
-                                }
-                                state_adapter = new B01_C01_StateAdapter(b01C01_state_lists,getContext(),"Dealer");
-                                State_recyclerview.setAdapter(state_adapter);
-                                State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-                            }else
-                            {
-                                NodataFound(getContext(),"Currently We Don't Have City Name !..");
-                               // Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
-
+                            if ((progressDialog != null) && progressDialog.isShowing()) {
+                                progressDialog.dismiss();
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        } catch (final IllegalArgumentException e) {
+                            // Handle or log or ignore
+                        } catch (final Exception e) {
+                            // Handle or log or ignore
+                        } finally {
+                            try {
+                                if (!response.equals("[]")) {
+                                    JSONArray Sarray = new JSONArray(response);
+                                    for (int i = 0; i < Sarray.length(); i++) {
+                                        JSONObject J = Sarray.getJSONObject(i);
+                                        B01_C01_State_List sitem = new B01_C01_State_List(
+                                                J.getString("state"),
+                                                J.getString("id")
+                                        );
+                                        b01C01_state_lists.add(sitem);
+                                    }
+                                    state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getContext(), "Dealer");
+                                    State_recyclerview.setAdapter(state_adapter);
+                                    State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+                                } else {
+                                    NodataFound(getContext(), "Currently We Don't Have City Name !..");
+                                    // Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog = null;
                         }
                     }
                 },

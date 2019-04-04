@@ -33,7 +33,6 @@ import java.util.List;
 
 public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 
-    Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +61,7 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 
         cname1=(TextView)findViewById(R.id.statecityname);
         cname1.setText(capitalize( "-------------- "+state_name+ " of "+cityname+ " " + type+" -------------"));
-
+        progressDialog = new ProgressDialog(this);
 
         b04DealerDetail_lists = new ArrayList<>();
 
@@ -94,7 +93,7 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
     }
 
     private  void  LoadDealerDetailData(){
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+
         progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
         progressDialog.show();
 
@@ -102,126 +101,129 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-
-
                         try {
-                            if(!response.equals("[]")) {
-                            JSONArray carray = new JSONArray(response);
-                            for (int i = 0; i < carray.length(); i++) {
-
-                                JSONObject c = carray.getJSONObject(i);
-                                // Toast.makeText(A03_StateCity.this, c.getString("id"), Toast.LENGTH_SHORT).show();
-                                B03_C03_DealerServiceCenterDetail_List citem = new B03_C03_DealerServiceCenterDetail_List(
-                                        c.getString("name"),
-                                        c.getString("slug"),
-                                        c.getString("address"),
-                                        c.getString("pincode"),
-                                        c.getString("contact_no"),
-                                        c.getString("email"),
-                                        c.getString("title"),
-                                        c.getString("contact_person")
-                                );
-
-                                b04DealerDetail_lists.add(citem);
+                            if ((progressDialog != null) && progressDialog.isShowing()) {
+                                progressDialog.dismiss();
                             }
-                            Dealer_adapter = new B03_C03_DealerServiceCenterDetail_Adapter(b04DealerDetail_lists, getApplicationContext());
-                            Dealer_recyclerview.setAdapter(Dealer_adapter);
+                        } catch (final IllegalArgumentException e) {
+                            // Handle or log or ignore
+                        } catch (final Exception e) {
+                            // Handle or log or ignore
+                        } finally {
+                            try {
+                                if (!response.equals("[]")) {
+                                    JSONArray carray = new JSONArray(response);
+                                    for (int i = 0; i < carray.length(); i++) {
 
-                            // Add Call---
-                            Add_Call(mAdView1);
+                                        JSONObject c = carray.getJSONObject(i);
+                                        // Toast.makeText(A03_StateCity.this, c.getString("id"), Toast.LENGTH_SHORT).show();
+                                        B03_C03_DealerServiceCenterDetail_List citem = new B03_C03_DealerServiceCenterDetail_List(
+                                                c.getString("name"),
+                                                c.getString("slug"),
+                                                c.getString("address"),
+                                                c.getString("pincode"),
+                                                c.getString("contact_no"),
+                                                c.getString("email"),
+                                                c.getString("title"),
+                                                c.getString("contact_person")
+                                        );
 
-                        }else
-                        {
-                            cname1.setVisibility(View.GONE);
-                            //NodataFound(context,Title_Nodata);
+                                        b04DealerDetail_lists.add(citem);
+                                    }
+                                    Dealer_adapter = new B03_C03_DealerServiceCenterDetail_Adapter(b04DealerDetail_lists, getApplicationContext());
+                                    Dealer_recyclerview.setAdapter(Dealer_adapter);
 
-                            nodata.setVisibility(View.VISIBLE);
-                            nodata_msg = (TextView)findViewById(R.id.nodata_msg);
-                            nodata_msg.setVisibility(View.VISIBLE);
-                            nodata_msg.setText(Title_Nodata);
-                            //getting the recyclerview from xml
-                            recyclerView = (RecyclerView)findViewById(R.id.ktmmodel);
-                            recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                                    // Add Call---
+                                    Add_Call(mAdView1);
 
-                            mAdView =findViewById(R.id.adView);
+                                } else {
+                                    cname1.setVisibility(View.GONE);
+                                    //NodataFound(context,Title_Nodata);
 
-                            mAdView1.setVisibility(View.GONE);
+                                    nodata.setVisibility(View.VISIBLE);
+                                    nodata_msg = (TextView) findViewById(R.id.nodata_msg);
+                                    nodata_msg.setVisibility(View.VISIBLE);
+                                    nodata_msg.setText(Title_Nodata);
+                                    //getting the recyclerview from xml
+                                    recyclerView = (RecyclerView) findViewById(R.id.ktmmodel);
+                                    recyclerView.setHasFixedSize(true);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-                            //initializing the productlist
-                            productList = new ArrayList<>();
+                                    mAdView = findViewById(R.id.adView);
 
+                                    mAdView1.setVisibility(View.GONE);
 
-                            //adding some items to our list
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            1,
-                                            "KTM 125 Duke",
-                                            "₹ 1,17,331",
-                                            "4.4",
-                                            "13.3 inch, Silver, 1.35 kg",
-                                            R.drawable.ktm_duke_125));
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            2,
-                                            "KTM 200 Duke",
-                                            "₹ 1,50,925",
-                                            "4.7",
-                                            "199.5cc , 35 Kmpl,24.6bhp,148 kg",
-                                            R.drawable.ktm_duke_200));
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            3,
-                                            "KTM RC200",
-                                            "₹ 1,78,496",
-                                            "4.7",
-                                            "199.5 cc, 25.1 bhp, 137 kg",
-                                            R.drawable.ktmrc_200));
-
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            4,
-                                            "KTM 390 Duke",
-                                            "₹ 2,43,562",
-                                            "4.8",
-                                            "373.2 cc, 23 kmpl, 42.9 bhp, 163 kg",
-                                            R.drawable.ktm_duke390));
-
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            5,
-                                            "KTM 250 Duke",
-                                            "₹ 1,80,058",
-                                            "4.7",
-                                            "248.76 cc, 29.6 bhp, 161 kg",
-                                            R.drawable.ktm_250_duke));
-
-                            productList.add(
-                                    new A01_KtmDetail_List(
-                                            6,
-                                            "KTM RC390",
-                                            "₹ 2,40,234",
-                                            "4.8",
-                                            "373.2 cc, 42.3 bhp, 147 kg",
-                                            R.drawable.ktm_rc390));
+                                    //initializing the productlist
+                                    productList = new ArrayList<>();
 
 
+                                    //adding some items to our list
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    1,
+                                                    "KTM 125 Duke",
+                                                    "₹ 1,17,331",
+                                                    "4.4",
+                                                    "13.3 inch, Silver, 1.35 kg",
+                                                    R.drawable.ktm_duke_125));
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    2,
+                                                    "KTM 200 Duke",
+                                                    "₹ 1,50,925",
+                                                    "4.7",
+                                                    "199.5cc , 35 Kmpl,24.6bhp,148 kg",
+                                                    R.drawable.ktm_duke_200));
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    3,
+                                                    "KTM RC200",
+                                                    "₹ 1,78,496",
+                                                    "4.7",
+                                                    "199.5 cc, 25.1 bhp, 137 kg",
+                                                    R.drawable.ktmrc_200));
 
-                            //creating recyclerview adapter
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    4,
+                                                    "KTM 390 Duke",
+                                                    "₹ 2,43,562",
+                                                    "4.8",
+                                                    "373.2 cc, 23 kmpl, 42.9 bhp, 163 kg",
+                                                    R.drawable.ktm_duke390));
 
-                            A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(context, productList);
-                            //setting adapter to recyclerview
-                            recyclerView.setAdapter(adapter);
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    5,
+                                                    "KTM 250 Duke",
+                                                    "₹ 1,80,058",
+                                                    "4.7",
+                                                    "248.76 cc, 29.6 bhp, 161 kg",
+                                                    R.drawable.ktm_250_duke));
+
+                                    productList.add(
+                                            new A01_KtmDetail_List(
+                                                    6,
+                                                    "KTM RC390",
+                                                    "₹ 2,40,234",
+                                                    "4.8",
+                                                    "373.2 cc, 42.3 bhp, 147 kg",
+                                                    R.drawable.ktm_rc390));
 
 
-                            Add_Call(mAdView);
+                                    //creating recyclerview adapter
 
+                                    A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(context, productList);
+                                    //setting adapter to recyclerview
+                                    recyclerView.setAdapter(adapter);
 
-                        }
+                                    Add_Call(mAdView);
+                                }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog = null;
                         }
                     }
                 },

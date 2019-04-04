@@ -45,7 +45,10 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
         NoInternet = (View)this.getView().findViewById(R.id.nointernet);
         nodata = (View)this.getView().findViewById(R.id.nodata);
         if (CheckInternet.isInternetAvailable(getContext())) {
+
             HttpsTrustManager.allowAllSSL(); //SSl
+
+            progressDialog = new ProgressDialog(getContext());
 
             State_recyclerview = (RecyclerView)this.getView().findViewById(R.id.statename);
             State_recyclerview.setHasFixedSize(true);
@@ -64,7 +67,7 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
 
     //---------------------Data From Server ---------------------------------//
     private  void  LoadStatedata(){
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+
         progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
         progressDialog.show();
 
@@ -73,32 +76,40 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-
                         try {
-                            if(!response.equals("[]")) {
-                                JSONArray Sarray = new JSONArray(response);
-                                for(int i=0;i<Sarray.length();i++)
-                                {
-                                    JSONObject J = Sarray.getJSONObject(i);
-                                    B01_C01_State_List sitem = new B01_C01_State_List(
-                                            J.getString("state"),
-                                            J.getString("id")
-                                    );
-                                    b01C01_state_lists.add(sitem);
-                                }
-                                state_adapter = new B01_C01_StateAdapter(b01C01_state_lists,getContext(),"ServiceCenter");
-                                State_recyclerview.setAdapter(state_adapter);
-                                State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-                            }else
-                            {
-                                Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
-                                NodataFound(getContext(),"Currently We Don't Have City Name !..");
-
+                            if ((progressDialog != null) && progressDialog.isShowing()) {
+                                progressDialog.dismiss();
                             }
+                        } catch (final IllegalArgumentException e) {
+                            // Handle or log or ignore
+                        } catch (final Exception e) {
+                            // Handle or log or ignore
+                        } finally {
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            try {
+                                if (!response.equals("[]")) {
+                                    JSONArray Sarray = new JSONArray(response);
+                                    for (int i = 0; i < Sarray.length(); i++) {
+                                        JSONObject J = Sarray.getJSONObject(i);
+                                        B01_C01_State_List sitem = new B01_C01_State_List(
+                                                J.getString("state"),
+                                                J.getString("id")
+                                        );
+                                        b01C01_state_lists.add(sitem);
+                                    }
+                                    state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getContext(), "ServiceCenter");
+                                    State_recyclerview.setAdapter(state_adapter);
+                                    State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+                                } else {
+                                    Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
+                                    NodataFound(getContext(), "Currently We Don't Have City Name !..");
+
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog = null;
                         }
                     }
                 },

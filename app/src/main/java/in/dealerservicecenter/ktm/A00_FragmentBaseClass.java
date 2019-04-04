@@ -1,5 +1,6 @@
 package in.dealerservicecenter.ktm;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,7 @@ public class A00_FragmentBaseClass extends Fragment {
     View NoInternet;
 
 
+    ProgressDialog progressDialog ;
 
 
     public void NodataFound(final Context context, final String Title_Nodata){
