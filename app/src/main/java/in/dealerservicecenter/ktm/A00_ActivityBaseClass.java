@@ -31,7 +31,7 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
 
     View nodata;
 
-    AdView mAdView; // add
+    AdView mAdView1,mAdView; // add
 
     public   String B04_URLData_DD = "https://www.dealerservicecenter.in/backend/api/get_product_dea_serv/dd/1638/328/";
     public   String B04_URLData_SS = "https://www.dealerservicecenter.in/backend/api/get_product_dea_serv/ss/1638/328/";

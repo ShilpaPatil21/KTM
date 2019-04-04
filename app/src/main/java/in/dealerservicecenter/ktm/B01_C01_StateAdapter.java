@@ -21,7 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class B01_C01_StateAdapter extends RecyclerView.Adapter<B01_C01_StateAdapter.Viewholder>  {
-    private InterstitialAd mInterstitialAd;
+
 
     private List<B01_C01_State_List> stateLists;
     private Context context;
@@ -34,8 +34,6 @@ public class B01_C01_StateAdapter extends RecyclerView.Adapter<B01_C01_StateAdap
 
     }
 
-
-
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -47,12 +45,7 @@ public class B01_C01_StateAdapter extends RecyclerView.Adapter<B01_C01_StateAdap
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final B01_C01_State_List stateList = stateLists.get(i);
-        MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
-        mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
-        mInterstitialAd.loadAd(new AdRequest.Builder()
-                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
-                .build());
+
 
         viewholder.TxtState.setText(capitalize(stateList.getStatename()));
         viewholder.SlinearLayout.setOnClickListener(new View.OnClickListener() {

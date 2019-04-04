@@ -34,16 +34,16 @@
 
 
 
-            <include layout="@layout/no_data_found"
+            <include layout="@layout/a01_ktm_model"
                 android:id="@+id/nodata"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"/>
+                android:layout_height="match_parent"/>
 
             <!-- Add from google -->
             <com.google.android.gms.ads.AdView
                 xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
+                android:id="@+id/adView1"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

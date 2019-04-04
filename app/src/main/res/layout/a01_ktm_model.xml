@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".A01_KTM_Model"
     android:background="@color/colorBlack">
 
         <LinearLayout
@@ -12,7 +11,22 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nodata_msg"
+                android:text="There is No Dealer Center"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                style="@style/RegularCondensed"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+
+
+            <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ktmmodel">

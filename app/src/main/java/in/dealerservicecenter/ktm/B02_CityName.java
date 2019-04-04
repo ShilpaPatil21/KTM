@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -111,6 +114,29 @@ Context context = this;
         requestQueue.add(stringrequest);
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_item_one) {
+            try {
+
+                Intent intent = new Intent(getApplicationContext(), A00_MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(intent);
+                return true;
+            }catch (Exception ex){
+                Log.e("Intent",ex.getMessage());
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

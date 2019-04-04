@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,16 +22,21 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 String UrlDataKtm="";
+    List<A01_KtmDetail_List> productList;
 String Title_Nodata;
+    RecyclerView recyclerView;
+    TextView nodata_msg;
     Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,7 @@ String Title_Nodata;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        mAdView = findViewById(R.id.adView); // Add
+        mAdView1 = findViewById(R.id.adView1); // Add
 
         nodata =findViewById(R.id.nodata);
 
@@ -66,12 +73,12 @@ String Title_Nodata;
         if(type.equals("Dealer")){
             UrlDataKtm = B04_URLData_DD;
             getSupportActionBar().setTitle("Dealer Details");
-            Title_Nodata= "There Is No Dealer Detail For "+state_name+ " Of "+cityname;
+            Title_Nodata= "Currently We Don't Have Any Dealer Data for "+state_name + " Of "+ cityname;
 
         }else if(type.equals("Servicecenter")){
             UrlDataKtm = B04_URLData_SS;
             getSupportActionBar().setTitle("Service Center Details");
-            Title_Nodata= "There Is No Service Center Detail For "+state_name+ " Of "+cityname;
+            Title_Nodata= "Currently We Don't Have Any Service-Center Data for "+state_name + " Of "+ cityname;
 
         }
         Log.d("type",type);
@@ -126,12 +133,94 @@ String Title_Nodata;
                             Dealer_recyclerview.setAdapter(Dealer_adapter);
 
                             // Add Call---
-                            Add_Call();
+                            Add_Call(mAdView1);
 
                         }else
                         {
                             cname1.setVisibility(View.GONE);
-                            NodataFound(context,Title_Nodata);
+                            //NodataFound(context,Title_Nodata);
+
+                            nodata.setVisibility(View.VISIBLE);
+                            nodata_msg = (TextView)findViewById(R.id.nodata_msg);
+                            nodata_msg.setVisibility(View.VISIBLE);
+                            nodata_msg.setText(Title_Nodata);
+                            //getting the recyclerview from xml
+                            recyclerView = (RecyclerView)findViewById(R.id.ktmmodel);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+                            mAdView =findViewById(R.id.adView);
+
+                            mAdView1.setVisibility(View.GONE);
+
+                            //initializing the productlist
+                            productList = new ArrayList<>();
+
+
+                            //adding some items to our list
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            1,
+                                            "KTM 125 Duke",
+                                            "₹ 1,17,331",
+                                            "4.4",
+                                            "13.3 inch, Silver, 1.35 kg",
+                                            R.drawable.ktm_duke_125));
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            2,
+                                            "KTM 200 Duke",
+                                            "₹ 1,50,925",
+                                            "4.7",
+                                            "199.5cc , 35 Kmpl,24.6bhp,148 kg",
+                                            R.drawable.ktm_duke_200));
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            3,
+                                            "KTM RC200",
+                                            "₹ 1,78,496",
+                                            "4.7",
+                                            "199.5 cc, 25.1 bhp, 137 kg",
+                                            R.drawable.ktmrc_200));
+
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            4,
+                                            "KTM 390 Duke",
+                                            "₹ 2,43,562",
+                                            "4.8",
+                                            "373.2 cc, 23 kmpl, 42.9 bhp, 163 kg",
+                                            R.drawable.ktm_duke390));
+
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            5,
+                                            "KTM 250 Duke",
+                                            "₹ 1,80,058",
+                                            "4.7",
+                                            "248.76 cc, 29.6 bhp, 161 kg",
+                                            R.drawable.ktm_250_duke));
+
+                            productList.add(
+                                    new A01_KtmDetail_List(
+                                            6,
+                                            "KTM RC390",
+                                            "₹ 2,40,234",
+                                            "4.8",
+                                            "373.2 cc, 42.3 bhp, 147 kg",
+                                            R.drawable.ktm_rc390));
+
+
+
+                            //creating recyclerview adapter
+
+                            A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(context, productList);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+
+                            Add_Call(mAdView);
+
 
                         }
 
@@ -153,14 +242,14 @@ String Title_Nodata;
 
     }
 
-    public  void Add_Call(){
+    public  void Add_Call(AdView mAdView1){
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
                 .build();
-        mAdView.loadAd(adRequest);
+        mAdView1.loadAd(adRequest);
 
 
-        mAdView.setAdListener(new AdListener() {
+        mAdView1.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
@@ -188,6 +277,29 @@ String Title_Nodata;
                 // to the app after tapping on an ad.
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_item_one) {
+            try {
+
+                Intent intent = new Intent(getApplicationContext(), A00_MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(intent);
+                return true;
+            }catch (Exception ex){
+                Log.e("Intent",ex.getMessage());
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

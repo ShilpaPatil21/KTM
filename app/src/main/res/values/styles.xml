@@ -34,4 +34,14 @@
         <item name="android:text">Cursive</item>
     </style>
 
+
+    <style name="RegularCondensed">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-condensed</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">sans-serif-condensed</item>
+    </style>
+
+
+
 </resources>
