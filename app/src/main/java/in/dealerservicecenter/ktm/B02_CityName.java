@@ -51,7 +51,7 @@ Context context = this;
                 City_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
 
-                getSupportActionBar().setTitle(capitalize(state_name+ "  "+"City List"));
+                getSupportActionBar().setTitle(capitalize(state_name+ "  "+"City"));
 
                 b03City_lists = new ArrayList<>();
 

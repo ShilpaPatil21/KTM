@@ -37,7 +37,7 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("State Name");
+        getActivity().setTitle("Service Center: State Name");
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

@@ -32,11 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
-String UrlDataKtm="";
-    List<A01_KtmDetail_List> productList;
-String Title_Nodata;
-    RecyclerView recyclerView;
-    TextView nodata_msg;
+
     Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +61,7 @@ String Title_Nodata;
         Dealer_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
         cname1=(TextView)findViewById(R.id.statecityname);
-        cname1.setText(capitalize( state_name+ " of "+cityname+ " " + type));
+        cname1.setText(capitalize( "-------------- "+state_name+ " of "+cityname+ " " + type+" -------------"));
 
 
         b04DealerDetail_lists = new ArrayList<>();

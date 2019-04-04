@@ -3,6 +3,7 @@ package in.dealerservicecenter.ktm;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,8 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
         viewholder.Txtemail.setText(capitalize(b04DealerDetail_list.getBemail()));
 
 
-
+        Linkify.addLinks(viewholder.Txtcontact, Linkify.ALL);
+        Linkify.addLinks(viewholder.Txtemail, Linkify.ALL);
 
     }
     @Override

@@ -14,16 +14,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:text="Dealer Detail"
-                android:id="@+id/statecityname"
-                android:textSize="15dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/statecityname"
+                android:text="Dealer Name"
+                android:textColor="@color/colorwhite"
                 android:gravity="center"
+                style="@style/RegularCondensed"
                 android:textStyle="bold"
-                style="@style/Casual"
-                android:textColor="#fff"
-                android:background="@drawable/back_layout" />
+                android:textSize="20dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/dealerdata"

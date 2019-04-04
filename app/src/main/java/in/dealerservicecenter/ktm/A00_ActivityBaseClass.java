@@ -28,6 +28,11 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
     RecyclerView Dealer_recyclerview;
     RecyclerView.Adapter Dealer_adapter;
 
+    String UrlDataKtm="";
+    List<A01_KtmDetail_List> productList;
+    String Title_Nodata;
+    RecyclerView recyclerView;
+    TextView nodata_msg;
 
     View nodata;
 

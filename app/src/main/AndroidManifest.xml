@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".A00_MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
         </activity>
 
         <meta-data
@@ -25,19 +26,24 @@
 
         <activity
             android:name=".D01_Wallpaper"
-            android:label="KTM WallPaper" />
+            android:label="KTM WallPaper"
+             android:screenOrientation="portrait"/>
         <activity
             android:name=".A02_KtmSpecification"
-            android:label="KTM SpeciFication" />
+            android:label="KTM SpeciFication"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".B02_CityName"
-            android:label="KTM SpeciFication" />
+            android:label="City Name"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".B03_C03_DealerServicecenter_detail"
-            android:label="KTM SpeciFication" />
+            android:label="Dealer Service Center"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".A00_FlashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
