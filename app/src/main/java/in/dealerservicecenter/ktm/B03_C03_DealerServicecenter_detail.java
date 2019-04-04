@@ -65,7 +65,7 @@ String Title_Nodata;
         Dealer_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
         cname1=(TextView)findViewById(R.id.statecityname);
-        cname1.setText(capitalize( state_name+ " of "+cityname+ " Delaers"));
+        cname1.setText(capitalize( state_name+ " of "+cityname+ " " + type));
 
 
         b04DealerDetail_lists = new ArrayList<>();
