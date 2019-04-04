@@ -43,6 +43,7 @@ public class B01_StateName extends A00_FragmentBaseClass {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         NoInternet = (View)this.getView().findViewById(R.id.nointernet);
+        nodata = (View)this.getView().findViewById(R.id.nodata);
         if (CheckInternet.isInternetAvailable(getContext())) {
             HttpsTrustManager.allowAllSSL(); //SSl
 
@@ -93,7 +94,8 @@ public class B01_StateName extends A00_FragmentBaseClass {
                                 State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
                             }else
                             {
-                                Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
+                                NodataFound(getContext(),"Currently We Don't Have City Name !..");
+                               // Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
 
                             }
 

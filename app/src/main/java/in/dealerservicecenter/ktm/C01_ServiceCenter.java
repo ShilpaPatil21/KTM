@@ -43,7 +43,7 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         NoInternet = (View)this.getView().findViewById(R.id.nointernet);
-
+        nodata = (View)this.getView().findViewById(R.id.nodata);
         if (CheckInternet.isInternetAvailable(getContext())) {
             HttpsTrustManager.allowAllSSL(); //SSl
 
@@ -93,6 +93,7 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
                             }else
                             {
                                 Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
+                                NodataFound(getContext(),"Currently We Don't Have City Name !..");
 
                             }
 

@@ -33,28 +33,29 @@ Context context = this;
         setContentView(R.layout.b02_c02_cityname_activity);
 
         if(CheckInternet.isInternetAvailable(this)) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-            Intent i = getIntent();
+                nodata = findViewById(R.id.nodata);
+                Intent i = getIntent();
 
-            Sid = i.getStringExtra("sid");
-            state_name = i.getStringExtra("state_name");
-            type = i.getStringExtra("type");
+                Sid = i.getStringExtra("sid");
+                state_name = i.getStringExtra("state_name");
+                type = i.getStringExtra("type");
 
-            HttpsTrustManager.allowAllSSL(); //SSl
+                HttpsTrustManager.allowAllSSL(); //SSl
 
-            City_recyclerview = (RecyclerView) findViewById(R.id.cityname);
-            City_recyclerview.setHasFixedSize(true);
-            City_recyclerview.setLayoutManager(new LinearLayoutManager(this));
+                City_recyclerview = (RecyclerView) findViewById(R.id.cityname);
+                City_recyclerview.setHasFixedSize(true);
+                City_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
 
-            getSupportActionBar().setTitle(capitalize(state_name+ "  "+"City List"));
+                getSupportActionBar().setTitle(capitalize(state_name+ "  "+"City List"));
 
-            b03City_lists = new ArrayList<>();
+                b03City_lists = new ArrayList<>();
 
-           LoadCityData();
+               LoadCityData();
         }else{
             Toast.makeText(context,"No internet",Toast.LENGTH_LONG).show();
         }
@@ -92,7 +93,7 @@ Context context = this;
                                 City_recyclerview.setAdapter(City_adapter);
                         }else
                         {
-                            Toast.makeText(context, "No data here", Toast.LENGTH_SHORT).show();
+                            NodataFound(context,"Currently We Don't Have City Name !..");
 
                         }
 
