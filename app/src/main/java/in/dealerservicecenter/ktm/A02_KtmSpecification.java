@@ -12,6 +12,7 @@ import android.widget.TabHost;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.google.android.gms.ads.AdListener;
@@ -22,7 +23,7 @@ import com.google.android.gms.ads.AdView;
 public class A02_KtmSpecification extends AppCompatActivity {
     String kid,kname;
     Context context = this;
-    private AdView mAdView;
+
     TextView m1;
     TextView m2;
     TextView m3;
@@ -132,53 +133,59 @@ public class A02_KtmSpecification extends AppCompatActivity {
 
     /*----------------------------------Slider -------------------------------*/
         viewPager = findViewById(R.id.vpage);
+        try {
 
+            if (kid.equals("2")) {
+                int images[] = {R.drawable.slider_200duke_1, R.drawable.slider_200duke_2, R.drawable.slider_200duke_3};
 
-        if(kid.equals("2")) {
-            int images[] = {R.drawable.slider_200duke_1, R.drawable.slider_200duke_2, R.drawable.slider_200duke_3};
-
-            for (int image : images) {
-                fliperimages(image);
+                for (int image : images) {
+                    fliperimages(image);
+                }
             }
-        }
-        if(kid.equals("1")) {
-            int images[] = {R.drawable.slider1_125duke, R.drawable.slider2_125duke, R.drawable.slider_200duke_3};
+            if (kid.equals("1")) {
+                int images[] = {R.drawable.slider1_125duke, R.drawable.slider2_125duke, R.drawable.slider_200duke_3};
 
-            for(int image :images){
-                fliperimages(image);
+                for (int image : images) {
+                    fliperimages(image);
+                }
             }
-        }
-        if(kid.equals("3")) {
-            int images[] = {R.drawable.ktmrc_200, R.drawable.slider2_rc200};
+            if (kid.equals("3")) {
+                int images[] = {R.drawable.ktmrc_200, R.drawable.slider2_rc200};
 
-            for(int image :images){
-                fliperimages(image);
+                for (int image : images) {
+                    fliperimages(image);
+                }
+
+            }
+            if (kid.equals("4")) {
+                int images[] = {R.drawable.slider1_390duke, R.drawable.slider2_390duke};
+
+                for (int image : images) {
+                    fliperimages(image);
+                }
+
+            }
+            if (kid.equals("5")) {
+                int images[] = {R.drawable.ktm_250_duke, R.drawable.slider2_250duke};
+
+                for (int image : images) {
+                    fliperimages(image);
+                }
+
+            }
+            if (kid.equals("6")) {
+                int images[] = {R.drawable.slider1_390rc, R.drawable.ktm_rc390};
+
+                for (int image : images) {
+                    fliperimages(image);
+                }
+
             }
 
-        }
-        if(kid.equals("4")) {
-            int images[] = {R.drawable.slider1_390duke, R.drawable.slider2_390duke};
-
-            for(int image :images){
-                fliperimages(image);
-            }
-
-        }
-        if(kid.equals("5")) {
-            int images[] = {R.drawable.ktm_250_duke, R.drawable.slider2_250duke};
-
-            for(int image :images){
-                fliperimages(image);
-            }
-
-        }
-        if(kid.equals("6")) {
-            int images[] = {R.drawable.slider1_390rc, R.drawable.ktm_rc390};
-
-            for(int image :images){
-                fliperimages(image);
-            }
-
+        } catch (OutOfMemoryError e) {
+            Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -476,102 +483,144 @@ public class A02_KtmSpecification extends AppCompatActivity {
         TableLayout bodypart_2= (TableLayout) findViewById(R.id.bodypart_2);
 
         if(kid.equals("6")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.headlight_rc390));
-            image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.instrument_rc_390));
+            try {
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.headlight_rc390));
+                image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.instrument_rc_390));
 
-            t1.setText("HEADLIGHT");
-            t2.setText("INSTRUMENT");
+                t1.setText("HEADLIGHT");
+                t2.setText("INSTRUMENT");
 
-            s1.setText("True superSport Headlight");
-            s2.setText("Adavance LCD display");
+                s1.setText("True superSport Headlight");
+                s2.setText("Adavance LCD display");
 
-            d1.setText("The powerful twin headlight provides superb visibility in low-light or dark conditions and perfectly" +
-                    " matches the modern, supersport race look of the KTM RC 390.");
+                d1.setText("The powerful twin headlight provides superb visibility in low-light or dark conditions and perfectly" +
+                        " matches the modern, supersport race look of the KTM RC 390.");
 
-            d2.setText("A 100% digital LCD display has everything you would expect from a state-of-the-art KTM motorcycle, including engaged gear, " +
-                    "fuel gauge and service reminder information. It also comes with an RPM alert to indicate the optimum moment for up-shifting, " +
-                    "just like they have on the supersport racing machines.");
-            bodypart_3.setVisibility(View.GONE);
-            bodypart_4.setVisibility(View.GONE);
+                d2.setText("A 100% digital LCD display has everything you would expect from a state-of-the-art KTM motorcycle, including engaged gear, " +
+                        "fuel gauge and service reminder information. It also comes with an RPM alert to indicate the optimum moment for up-shifting, " +
+                        "just like they have on the supersport racing machines.");
+                bodypart_3.setVisibility(View.GONE);
+                bodypart_4.setVisibility(View.GONE);
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         if(kid.equals("3")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc200_1));
-            image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc200_2));
+            try {
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc200_1));
+                image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc200_2));
 
-            t2.setText("HANDLEBAR");
-            s2.setText("Racing profile handlebars");
-            d2.setText("The handlebars on the KTM RC 200 offer the perfect riding position for on-road domination. The clip-on bars and strategically positioned switches contribute greatly to the bike's sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner.");
-            t1.setText("WINDSHIELD");
-            s1.setText("Advanced aerodynamic protection");
-            d1.setText("The advanced design of the KTM RC 200's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road.");
-            bodypart_3.setVisibility(View.GONE);
-            bodypart_4.setVisibility(View.GONE);
+                t2.setText("HANDLEBAR");
+                s2.setText("Racing profile handlebars");
+                d2.setText("The handlebars on the KTM RC 200 offer the perfect riding position for on-road domination. The clip-on bars and strategically positioned switches contribute greatly to the bike's sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner.");
+                t1.setText("WINDSHIELD");
+                s1.setText("Advanced aerodynamic protection");
+                d1.setText("The advanced design of the KTM RC 200's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road.");
+                bodypart_3.setVisibility(View.GONE);
+                bodypart_4.setVisibility(View.GONE);
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
 
         if (kid.equals("1")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_1));
-            image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_2));
-            image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_3));
-            image_b4.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_4));
+            try {
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_1));
+                image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_2));
+                image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_3));
+                image_b4.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_125duke_4));
 
-            t1.setText("DESIGN");
-            s1.setText("Pure BEAST style");
-            d1.setText("At first you notice that LED headlight. That aggressive front. That predatory stance. When you come closer, you feel its steel fuel tank and multiple high-quality cast parts. In the end you realize that the design and production standards of this bike were set sky-high. Just like its big brother, the KTM 1290 SUPER DUKE R, the KTM 125 DUKE looks like a naked, angry, untamed little beast.");
-            t2.setText("TFT DISPLAY");
-            s2.setText("---------");
-            d2.setText("As an absolute first in its class, the KTM 125 DUKE boasts an innovative multicolor TFT display, presenting all the data you need to go faster in a clear-cut, uncluttered way. As you rev the engine, the display bars change color, either spurring you on or telling you to back off when the engine’s still cold. The display also automatically adapts its color to best suit the light conditions around you. Innovation at its best!!!");
+                t1.setText("DESIGN");
+                s1.setText("Pure BEAST style");
+                d1.setText("At first you notice that LED headlight. That aggressive front. That predatory stance. When you come closer, you feel its steel fuel tank and multiple high-quality cast parts. In the end you realize that the design and production standards of this bike were set sky-high. Just like its big brother, the KTM 1290 SUPER DUKE R, the KTM 125 DUKE looks like a naked, angry, untamed little beast.");
+                t2.setText("TFT DISPLAY");
+                s2.setText("---------");
+                d2.setText("As an absolute first in its class, the KTM 125 DUKE boasts an innovative multicolor TFT display, presenting all the data you need to go faster in a clear-cut, uncluttered way. As you rev the engine, the display bars change color, either spurring you on or telling you to back off when the engine’s still cold. The display also automatically adapts its color to best suit the light conditions around you. Innovation at its best!!!");
 
-            t3.setText("LED HEADLIGHT");
-            s3.setText("-------------");
-            d3.setText("The aggressively styled LED headlight on the KTM 125 DUKE is a big highlight in this bike’s design and a clear referral to its big brother, the KTM 1290 SUPER DUKE R. Practical as well as looking ultra-mean, it produces outstanding visibility for riding in low light or dark conditions. The parking light, which consists of 20 LEDs, ensures that the bike is highly visible to other road users, keeping you safe while you dominate the streets.   ");
+                t3.setText("LED HEADLIGHT");
+                s3.setText("-------------");
+                d3.setText("The aggressively styled LED headlight on the KTM 125 DUKE is a big highlight in this bike’s design and a clear referral to its big brother, the KTM 1290 SUPER DUKE R. Practical as well as looking ultra-mean, it produces outstanding visibility for riding in low light or dark conditions. The parking light, which consists of 20 LEDs, ensures that the bike is highly visible to other road users, keeping you safe while you dominate the streets.   ");
 
-            t4.setText("MENU SWITCH");
-            s4.setText("----------");
-            d4.setText("Different modes for the various built-in assistance systems can be selected using an illuminated menu switch on the left side of the handlebar. It's very simple and intuitive: flick \"up\" and \"down\" through the menu, select the desired setting with the right button or go a step back with the left. Job done. Race on.");
+                t4.setText("MENU SWITCH");
+                s4.setText("----------");
+                d4.setText("Different modes for the various built-in assistance systems can be selected using an illuminated menu switch on the left side of the handlebar. It's very simple and intuitive: flick \"up\" and \"down\" through the menu, select the desired setting with the right button or go a step back with the left. Job done. Race on.");
 
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
-        if(kid.equals("4")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_1));
-            image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_2));
-            image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_3));
-            t1.setText("TFT COLOR DISPLAY");
-            s1.setText("Multicolor display");
-            d1.setText("As an absolute first in its class, the KTM 390 DUKE boasts an innovative multicolor TFT display, presenting all the data you need to go faster in a clear-cut, uncluttered way. As you rev the engine, the display bars change color, either spurring you on or telling you to back off when the engine’s still cold. The display also automatically adapts its color to best suit the light conditions around you. Innovation at its best!!!");
+        if(kid.equals("4")) {
+            try {
 
-            t2.setText("LED HEADLIGHT");
-            s2.setText("Mean illumination");
-            d2.setText("The aggressively styled LED headlight on the KTM 390 DUKE is a big highlight in this bike’s design and a clear referral to its big brother, the KTM 1290 SUPER DUKE R. Practical as well as looking ultra-mean, it produces outstanding visibility for riding in low light or dark conditions. The parking light, which consists of 20 LEDs, ensures that the bike is highly visible to other road users, keeping you safe while you dominate the streets.");
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_1));
+                image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_2));
+                image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_390duke_3));
+                t1.setText("TFT COLOR DISPLAY");
+                s1.setText("Multicolor display");
+                d1.setText("As an absolute first in its class, the KTM 390 DUKE boasts an innovative multicolor TFT display, presenting all the data you need to go faster in a clear-cut, uncluttered way. As you rev the engine, the display bars change color, either spurring you on or telling you to back off when the engine’s still cold. The display also automatically adapts its color to best suit the light conditions around you. Innovation at its best!!!");
 
-            t3.setText("MENU SWITCH");
-            s3.setText("-----------");
-            d3.setText("Different modes for the various built-in assistance systems can be selected using an illuminated menu switch on the left side of the handlebar. It's very simple and intuitive: flick \"up\" and \"down\" through the menu, select the desired setting with the right button or go a step back with the left. Job done. Race on.");
-            bodypart_4.setVisibility(View.GONE);
+                t2.setText("LED HEADLIGHT");
+                s2.setText("Mean illumination");
+                d2.setText("The aggressively styled LED headlight on the KTM 390 DUKE is a big highlight in this bike’s design and a clear referral to its big brother, the KTM 1290 SUPER DUKE R. Practical as well as looking ultra-mean, it produces outstanding visibility for riding in low light or dark conditions. The parking light, which consists of 20 LEDs, ensures that the bike is highly visible to other road users, keeping you safe while you dominate the streets.");
+
+                t3.setText("MENU SWITCH");
+                s3.setText("-----------");
+                d3.setText("Different modes for the various built-in assistance systems can be selected using an illuminated menu switch on the left side of the handlebar. It's very simple and intuitive: flick \"up\" and \"down\" through the menu, select the desired setting with the right button or go a step back with the left. Job done. Race on.");
+                bodypart_4.setVisibility(View.GONE);
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
         }
         if(kid.equals("5")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_1));
-            image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_2));
-            image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_3));
-            t1.setText("DESIGN");
-            s1.setText("Predatory design");
-            d1.setText("At first you notice that aggressive front end. That predatory, READY TO RACE stance. When you come closer, you feel its steel fuel tank and multiple high-quality cast parts. In the end, you realize that the design and production standards of this bike were set sky-high. Just like its big brother, the KTM 1290 SUPER DUKE R, the KTM 250 DUKE looks like a naked, angry, untamed beast.\n");
+            try{
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_1));
+                image_b2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_2));
+                image_b3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_250duke_3));
+                t1.setText("DESIGN");
+                s1.setText("Predatory design");
+                d1.setText("At first you notice that aggressive front end. That predatory, READY TO RACE stance. When you come closer, you feel its steel fuel tank and multiple high-quality cast parts. In the end, you realize that the design and production standards of this bike were set sky-high. Just like its big brother, the KTM 1290 SUPER DUKE R, the KTM 250 DUKE looks like a naked, angry, untamed beast.\n");
 
-            t2.setText("HEADLIGHT");
-            s2.setText("--------");
-            d2.setText("With integrated Daytime Running Lights (DRL) consisting of 20 individual LEDs, this halogen headlight makes a bold statement, with its an unmistakable similarity to THE BEAST. Just get on and hunt them all – the 250 DUKE invites you to do exactly that.");
+                t2.setText("HEADLIGHT");
+                s2.setText("--------");
+                d2.setText("With integrated Daytime Running Lights (DRL) consisting of 20 individual LEDs, this halogen headlight makes a bold statement, with its an unmistakable similarity to THE BEAST. Just get on and hunt them all – the 250 DUKE invites you to do exactly that.");
 
-            t3.setText("LCD DISPLAY");
-            s3.setText("----------");
-            d3.setText("A 100% digital LCD display has everything you would expect from a state-of-the-art KTM motorcycle, including engaged gear, fuel gauge and service reminder information. It also comes with an RPM alert to indicate the optimum moment for up-shifting, just like they have on the supersport racing machines.");
-            bodypart_4.setVisibility(View.GONE);
+                t3.setText("LCD DISPLAY");
+                s3.setText("----------");
+                d3.setText("A 100% digital LCD display has everything you would expect from a state-of-the-art KTM motorcycle, including engaged gear, fuel gauge and service reminder information. It also comes with an RPM alert to indicate the optimum moment for up-shifting, just like they have on the supersport racing machines.");
+                bodypart_4.setVisibility(View.GONE);
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         if(kid.equals("2")){
-            image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_200duke_1));
-            t1.setText("INSTRUMENT");
-            s1.setText("Multi-function cockpit");
-            d1.setText("The KTM 200 DUKE has everything that distinguishes a true KTM: from the high-quality chassis components to the hi-tech multi-function cockpit. The advanced dashboard even keeps you up to date with fuel consumption and remaining range. The extensive KTM PowerParts range gives you the option of adding your own individual style to your dashboard for the ultimate personalized touch.  ");
-            bodypart_3.setVisibility(View.GONE);
-            bodypart_4.setVisibility(View.GONE);
-            bodypart_2.setVisibility(View.GONE);
+            try {
+                image_b1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_200duke_1));
+                t1.setText("INSTRUMENT");
+                s1.setText("Multi-function cockpit");
+                d1.setText("The KTM 200 DUKE has everything that distinguishes a true KTM: from the high-quality chassis components to the hi-tech multi-function cockpit. The advanced dashboard even keeps you up to date with fuel consumption and remaining range. The extensive KTM PowerParts range gives you the option of adding your own individual style to your dashboard for the ultimate personalized touch.  ");
+                bodypart_3.setVisibility(View.GONE);
+                bodypart_4.setVisibility(View.GONE);
+                bodypart_2.setVisibility(View.GONE);
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         /*------------------------------Body Work-------------------------------------------------*/
         ImageView image_e1 = (ImageView)findViewById(R.id.ec_img1);
@@ -601,77 +650,109 @@ public class A02_KtmSpecification extends AppCompatActivity {
 
 
         if(kid.equals("5")){
-            image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_250duke_1));
-            e1.setText("SEATS");
-            se1.setText("Aggressive riding position");
-            de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super- secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 250 DUKE, whilst also ensuring excellent comfort for the passenger.");
-            ebodypart_2.setVisibility(View.GONE);
-            ebodypart_3.setVisibility(View.GONE);
-            ebodypart_4.setVisibility(View.GONE );
+            try{
+                    image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_250duke_1));
+                    e1.setText("SEATS");
+                    se1.setText("Aggressive riding position");
+                    de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super- secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 250 DUKE, whilst also ensuring excellent comfort for the passenger.");
+                    ebodypart_2.setVisibility(View.GONE);
+                    ebodypart_3.setVisibility(View.GONE);
+                    ebodypart_4.setVisibility(View.GONE );
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         if(kid.equals("2")){
-            image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_200duke_1));
-            e1.setText("SEATS");
-            se1.setText("Aggressive riding position");
-            de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super-secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 200 DUKE, whilst also ensuring excellent comfort for the passenger. ");
-            ebodypart_2.setVisibility(View.GONE);
-            ebodypart_3.setVisibility(View.GONE);
-            ebodypart_4.setVisibility(View.GONE );
+            try{
+                image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_200duke_1));
+                e1.setText("SEATS");
+                se1.setText("Aggressive riding position");
+                de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super-secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 200 DUKE, whilst also ensuring excellent comfort for the passenger. ");
+                ebodypart_2.setVisibility(View.GONE);
+                ebodypart_3.setVisibility(View.GONE);
+                ebodypart_4.setVisibility(View.GONE );
+
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         if(kid.equals("3")){
-            image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_rc200_1));
-            e1.setText("HANDLEBAR");
-            se1.setText("Racing profile handlebars");
-            de1.setText("The handlebars on the KTM RC 200 offer the perfect riding position for on-road domination. The clip-on bars and strategically positioned switches contribute greatly to the bike's sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner. ");
+            try{
+                image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_rc200_1));
+                e1.setText("HANDLEBAR");
+                se1.setText("Racing profile handlebars");
+                de1.setText("The handlebars on the KTM RC 200 offer the perfect riding position for on-road domination. The clip-on bars and strategically positioned switches contribute greatly to the bike's sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner. ");
 
-            image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc_390windshield));
-            e2.setText("WINDSHIELD");
-            se2.setText("Advanced aerodynamic protection");
-            de2.setText("The advanced design of the KTM RC 200's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road.");
+                image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc_390windshield));
+                e2.setText("WINDSHIELD");
+                se2.setText("Advanced aerodynamic protection");
+                de2.setText("The advanced design of the KTM RC 200's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road.");
 
-            image_e3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_rc200_3));
-            e3.setText("FOOTPEGS");
-            se3.setText("Aircraft-grade aluminum");
-            de3.setText("Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles.");
-            ebodypart_4.setVisibility(View.GONE);
+                image_e3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_rc200_3));
+                e3.setText("FOOTPEGS");
+                se3.setText("Aircraft-grade aluminum");
+                de3.setText("Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles.");
+                ebodypart_4.setVisibility(View.GONE);
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
         }
         if(kid.equals("6")){
+            try{
+                image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_390duke_2));
+                image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_390duke_1));
+                e1.setText("SEATS");
+                de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super- secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 390 DUKE, whilst also ensuring excellent comfort for the passenger.");
+                se1.setText("Seated for speed");
 
-            image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_390duke_2));
-            image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_ec_390duke_1));
-            e1.setText("SEATS");
-            de1.setText("The two-part seat offers first class sport riding ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a super- secure position, whilst also being high enough for ultimate cornering fun. The Pillion seat has been integrated into the bodywork so as not to compromise the stunt-ready look of the KTM 390 DUKE, whilst also ensuring excellent comfort for the passenger.");
-            se1.setText("Seated for speed");
 
+                e2.setText("HANDLEBAR");
+                se2.setText("Ultimate control");
+                de2.setText("Hi-tech upright handlebars offer KTM 390 DUKE riders a controlled yet aggressive body position, allowing you to dominate in all aspects of riding. From destroying corners to pulling the perfect stoppie, these bars will give you the balance and confidence you need to attack the tarmac like never before. Clutch and brake levers are fully adjustable, allowing you to customize your cockpit to suit your individual riding style.");
 
-            e2.setText("HANDLEBAR");
-            se2.setText("Ultimate control");
-            de2.setText("Hi-tech upright handlebars offer KTM 390 DUKE riders a controlled yet aggressive body position, allowing you to dominate in all aspects of riding. From destroying corners to pulling the perfect stoppie, these bars will give you the balance and confidence you need to attack the tarmac like never before. Clutch and brake levers are fully adjustable, allowing you to customize your cockpit to suit your individual riding style.");
+                ebodypart_3.setVisibility(View.GONE);
+                ebodypart_4.setVisibility(View.GONE );
 
-            ebodypart_3.setVisibility(View.GONE);
-            ebodypart_4.setVisibility(View.GONE );
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
-        if(kid.equals("4")){
-            image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_egc_rc390));
-            image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_seat_rc390));
-            image_e3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc_390windshield));
-            image_e4.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_footpage_rc390));
-            e1.setText("HANDLEBAR");
-            se1.setText("Racing profile bars");
-            de1.setText("The clip-on bars and strategically positioned switches contribute greatly to the bike’s sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner.");
+        if(kid.equals("4")) {
+            try {
+                image_e1.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_egc_rc390));
+                image_e2.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_seat_rc390));
+                image_e3.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_rc_390windshield));
+                image_e4.setImageDrawable(context.getResources().getDrawable(R.drawable.a02_footpage_rc390));
+                e1.setText("HANDLEBAR");
+                se1.setText("Racing profile bars");
+                de1.setText("The clip-on bars and strategically positioned switches contribute greatly to the bike’s sporty and aggressive riding position, whilst also enhancing control for perfect lines through any corner.");
 
-            e2.setText("SEATS");
-            se2.setText("Supersport ergonomics");
-            de2.setText("The two-part seat offers first class, supersport ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a secure position, whilst also being high enough for circuit-style riding. The Pillion seat has been integrated into the bodywork so as not to compromise the supersport look of the KTM RC 390, whilst also ensuring excellent comfort for the passenger.");
+                e2.setText("SEATS");
+                se2.setText("Supersport ergonomics");
+                de2.setText("The two-part seat offers first class, supersport ergonomics with perfect support for both rider and pillion.  A seat height of 820 mm enables riders to have a secure position, whilst also being high enough for circuit-style riding. The Pillion seat has been integrated into the bodywork so as not to compromise the supersport look of the KTM RC 390, whilst also ensuring excellent comfort for the passenger.");
 
-            e3.setText("WINDSHIELD");
-            se2.setText("Advanced aerodynamic protection.");
-            de3.setText("The advanced design of the KTM RC 390's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road. ");
+                e3.setText("WINDSHIELD");
+                se2.setText("Advanced aerodynamic protection.");
+                de3.setText("The advanced design of the KTM RC 390's windshield works with the aerodynamic optimization of the front end to ensure ultimate wind protection for riders who like to open it up on the open road. ");
 
-            e4.setText("FOOTPEGS");
-            se4.setText("Race-ready footpegs");
-            de4.setText("Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles.");
+                e4.setText("FOOTPEGS");
+                se4.setText("Race-ready footpegs");
+                de4.setText("Crafted from high-grade, CNC-machined aircraft aluminum, these lightweight yet super-strong footpegs offer premium purchase for your feet when you need it most. The pegs are fully customizable with three positions available to accommodate for different rider shapes and riding styles.");
+            } catch (OutOfMemoryError e) {
+                Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
@@ -701,48 +782,6 @@ public class A02_KtmSpecification extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-    public void Add_Banner(){
-        AdView adView = new AdView(context);
-        adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
 
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
-                .build();
-
-
-        mAdView.loadAd(adRequest);
-
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
-            }
-
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        });
-
-
-    }
 
 }

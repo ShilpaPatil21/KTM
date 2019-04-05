@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -47,66 +48,72 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final A01_KtmDetail_List a01DealerDetail_list = a01DealerDetail_lists.get(i);
-        MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
-        mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
-        mInterstitialAd.loadAd(new AdRequest.Builder()
-                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
-                .build());
+        try{
+            MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
+            mInterstitialAd = new InterstitialAd(context);
+            mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
+            mInterstitialAd.loadAd(new AdRequest.Builder()
+                    .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
+                    .build());
 
 
-        viewholder.Txtname.setText(capitalize( a01DealerDetail_list.getPName()));
-        viewholder.TxtShortdes.setText(capitalize( a01DealerDetail_list.getPdesc()));
-        viewholder.Txtrate.setText(capitalize( a01DealerDetail_list.getPrate()));
-        viewholder.TxtPrice.setText(capitalize( a01DealerDetail_list.getPprice()));
-        viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(a01DealerDetail_list.getPimg()))));
+            viewholder.Txtname.setText(capitalize( a01DealerDetail_list.getPName()));
+            viewholder.TxtShortdes.setText(capitalize( a01DealerDetail_list.getPdesc()));
+            viewholder.Txtrate.setText(capitalize( a01DealerDetail_list.getPrate()));
+            viewholder.TxtPrice.setText(capitalize( a01DealerDetail_list.getPprice()));
+            viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(a01DealerDetail_list.getPimg()))));
 
-        viewholder.KtmRv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
+            viewholder.KtmRv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    } else {
 
-                    Intent o = new Intent(context, A02_KtmSpecification.class);
-                    o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
-                    o.putExtra("kname", a01DealerDetail_list.getPName());
-                    context.startActivity(o);
-
-                }
-
-                mInterstitialAd.setAdListener(new AdListener() {
-                    @Override
-                    public void onAdLoaded() {
-                        // Code to be executed when an ad finishes loading.
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(int errorCode) {
-                        // Code to be executed when an ad request fails.
-                    }
-
-                    @Override
-                    public void onAdOpened() {
-                        // Code to be executed when the ad is displayed.
-                    }
-
-                    @Override
-                    public void onAdLeftApplication() {
-                        // Code to be executed when the user has left the app.
-                    }
-
-                    @Override
-                    public void onAdClosed() {
-                        // Code to be executed when the interstitial ad is closed.
                         Intent o = new Intent(context, A02_KtmSpecification.class);
                         o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
                         o.putExtra("kname", a01DealerDetail_list.getPName());
                         context.startActivity(o);
+
                     }
-                });
-            }
+
+                    mInterstitialAd.setAdListener(new AdListener() {
+                        @Override
+                        public void onAdLoaded() {
+                            // Code to be executed when an ad finishes loading.
+                        }
+
+                        @Override
+                        public void onAdFailedToLoad(int errorCode) {
+                            // Code to be executed when an ad request fails.
+                        }
+
+                        @Override
+                        public void onAdOpened() {
+                            // Code to be executed when the ad is displayed.
+                        }
+
+                        @Override
+                        public void onAdLeftApplication() {
+                            // Code to be executed when the user has left the app.
+                        }
+
+                        @Override
+                        public void onAdClosed() {
+                            // Code to be executed when the interstitial ad is closed.
+                            Intent o = new Intent(context, A02_KtmSpecification.class);
+                            o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
+                            o.putExtra("kname", a01DealerDetail_list.getPName());
+                            context.startActivity(o);
+                        }
+                    });
+                }
         });
+        } catch (OutOfMemoryError e) {
+            Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     public int getItemCount() {

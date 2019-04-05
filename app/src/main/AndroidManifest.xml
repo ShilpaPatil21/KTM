@@ -7,10 +7,10 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@drawable/a02_rc_390"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
