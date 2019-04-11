@@ -1,11 +1,13 @@
 package in.dealerservicecenter.ktm;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +15,16 @@ import java.util.List;
 public class D01_Wallpaper extends AppCompatActivity {
 
     List<D01_KtmWallpaper_List> d01_ktmWallpaper_lists;
-
+    Context context = this;
     //the recyclerview
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.d01_wallpaper_activity);
+
+        try{
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getting the recyclerview from xml
@@ -163,6 +168,10 @@ public class D01_Wallpaper extends AppCompatActivity {
 
         }catch (Exception ex){
             Log.e("Images",ex.getMessage());
+        }
+
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
     /*------------------------ BACK BUTTON ----------------------------*/

@@ -14,6 +14,11 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity
             android:name=".A00_MainActivity"
             android:label="@string/title_activity_main"

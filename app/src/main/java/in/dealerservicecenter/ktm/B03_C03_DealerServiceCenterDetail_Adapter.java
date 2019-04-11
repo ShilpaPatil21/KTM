@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -40,16 +41,19 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final B03_C03_DealerServiceCenterDetail_List b04DealerDetail_list = b04DealerDetail_lists.get(i);
+        try {
+            viewholder.Txtname.setText(capitalize(b04DealerDetail_list.getBname()));
+            viewholder.Txtadd.setText(capitalize(b04DealerDetail_list.getBadd()) + "   " + b04DealerDetail_list.getPincode());
+            viewholder.Txtcontact.setText(capitalize(b04DealerDetail_list.getBcontact_person() + " -" + b04DealerDetail_list.getBcontact()));
+            viewholder.Txtslug.setText(capitalize(b04DealerDetail_list.getBtitle()));
+            viewholder.Txtemail.setText(capitalize(b04DealerDetail_list.getBemail()));
 
-        viewholder.Txtname.setText(capitalize( b04DealerDetail_list.getBname()));
-        viewholder.Txtadd.setText(capitalize(b04DealerDetail_list.getBadd()) + "   " + b04DealerDetail_list.getPincode());
-        viewholder.Txtcontact.setText(capitalize(b04DealerDetail_list.getBcontact_person()+ " -" +b04DealerDetail_list.getBcontact()));
-        viewholder.Txtslug.setText(capitalize(b04DealerDetail_list.getBtitle()));
-        viewholder.Txtemail.setText(capitalize(b04DealerDetail_list.getBemail()));
 
-
-        Linkify.addLinks(viewholder.Txtcontact, Linkify.ALL);
-        Linkify.addLinks(viewholder.Txtemail, Linkify.ALL);
+            Linkify.addLinks(viewholder.Txtcontact, Linkify.ALL);
+            Linkify.addLinks(viewholder.Txtemail, Linkify.ALL);
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
     @Override

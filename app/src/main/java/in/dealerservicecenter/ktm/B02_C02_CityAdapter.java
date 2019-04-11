@@ -46,58 +46,25 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final B02_C02_City_List cityList = cityLists.get(i);
-        MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
-        mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
-        mInterstitialAd.loadAd(new AdRequest.Builder()
-                .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
-                .build());
-        viewholder.TxtCity.setText(capitalize(cityList.getCityname()));
+        try {
+            MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
+            mInterstitialAd = new InterstitialAd(context);
+            mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
+            mInterstitialAd.loadAd(new AdRequest.Builder()
+                    .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
+                    .build());
+            viewholder.TxtCity.setText(capitalize(cityList.getCityname()));
 
 
-        viewholder.ClinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(CheckInternet.isInternetAvailable(context)) //if connection available
-                {
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    } else {
+            viewholder.ClinearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (CheckInternet.isInternetAvailable(context)) //if connection available
+                    {
+                        if (mInterstitialAd.isLoaded()) {
+                            mInterstitialAd.show();
+                        } else {
 
-
-                        Intent intent = new Intent(context, B03_C03_DealerServicecenter_detail.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                        intent.putExtra("cid", cityList.getcid());
-                        intent.putExtra("cityname", cityList.getCityname());
-                        intent.putExtra("sid", Sid);
-                        intent.putExtra("state_name", state_name);
-                        intent.putExtra("type", type);
-                        context.startActivity(intent);
-                    }
-                    mInterstitialAd.setAdListener(new AdListener() {
-                        @Override
-                        public void onAdLoaded() {
-                            // Code to be executed when an ad finishes loading.
-                        }
-
-                        @Override
-                        public void onAdFailedToLoad(int errorCode) {
-                            // Code to be executed when an ad request fails.
-                        }
-
-                        @Override
-                        public void onAdOpened() {
-                            // Code to be executed when the ad is displayed.
-                        }
-
-                        @Override
-                        public void onAdLeftApplication() {
-                            // Code to be executed when the user has left the app.
-                        }
-
-                        @Override
-                        public void onAdClosed() {
-                            // Code to be executed when the interstitial ad is closed.
 
                             Intent intent = new Intent(context, B03_C03_DealerServicecenter_detail.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
@@ -108,14 +75,51 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
                             intent.putExtra("type", type);
                             context.startActivity(intent);
                         }
-                    });
+                        mInterstitialAd.setAdListener(new AdListener() {
+                            @Override
+                            public void onAdLoaded() {
+                                // Code to be executed when an ad finishes loading.
+                            }
 
-                }else{
-                    //no connection
-                    Toast.makeText(context, "No Internet Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onAdFailedToLoad(int errorCode) {
+                                // Code to be executed when an ad request fails.
+                            }
+
+                            @Override
+                            public void onAdOpened() {
+                                // Code to be executed when the ad is displayed.
+                            }
+
+                            @Override
+                            public void onAdLeftApplication() {
+                                // Code to be executed when the user has left the app.
+                            }
+
+                            @Override
+                            public void onAdClosed() {
+                                // Code to be executed when the interstitial ad is closed.
+
+                                Intent intent = new Intent(context, B03_C03_DealerServicecenter_detail.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                                intent.putExtra("cid", cityList.getcid());
+                                intent.putExtra("cityname", cityList.getCityname());
+                                intent.putExtra("sid", Sid);
+                                intent.putExtra("state_name", state_name);
+                                intent.putExtra("type", type);
+                                context.startActivity(intent);
+                            }
+                        });
+
+                    } else {
+                        //no connection
+                        Toast.makeText(context, "No Internet Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
 
     }

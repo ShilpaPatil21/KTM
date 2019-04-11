@@ -31,11 +31,7 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
     public A01_KtmDetail_Adapter(Context context, List<A01_KtmDetail_List> a01_ktmDetail_lists) {
         this.a01DealerDetail_lists = a01_ktmDetail_lists;
         this.context = context;
-
-
     }
-
-
 
     @NonNull
     @Override

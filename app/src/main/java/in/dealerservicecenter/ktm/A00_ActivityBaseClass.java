@@ -85,4 +85,5 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
 
     }
 
+
 }

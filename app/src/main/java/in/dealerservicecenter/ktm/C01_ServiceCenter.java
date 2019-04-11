@@ -3,6 +3,7 @@ package in.dealerservicecenter.ktm;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class C01_ServiceCenter extends A00_FragmentBaseClass {
+    private Handler handler;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,87 +46,101 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
         super.onActivityCreated(savedInstanceState);
         NoInternet = (View)this.getView().findViewById(R.id.nointernet);
         nodata = (View)this.getView().findViewById(R.id.nodata);
-        if (CheckInternet.isInternetAvailable(getContext())) {
+        try {
+            if (CheckInternet.isInternetAvailable(getActivity())) {
 
-            HttpsTrustManager.allowAllSSL(); //SSl
+                HttpsTrustManager.allowAllSSL(); //SSl
 
-            progressDialog = new ProgressDialog(getContext());
+                progressDialog = new ProgressDialog(getActivity());
 
-            State_recyclerview = (RecyclerView)this.getView().findViewById(R.id.statename);
-            State_recyclerview.setHasFixedSize(true);
-            State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+                State_recyclerview = (RecyclerView) this.getView().findViewById(R.id.statename);
+                State_recyclerview.setHasFixedSize(true);
+                State_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            b01C01_state_lists = new ArrayList<>();
+                b01C01_state_lists = new ArrayList<>();
 
-            //---------------------Data From Server Call---------------------------------//
-            LoadStatedata();
+                //---------------------Data From Server Call---------------------------------//
+                handler = new Handler();
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            LoadStatedata();
+                        } catch (Exception e) {
+                            System.err.println("Error in catch is " + e);
+                        }
+                    }
+                });
 
-        } else {
-            NoInternet.setVisibility(View.VISIBLE);
-            Snackbar.make(getView(), "No InterNet Please Turn On Mobile Data Or Hotspot", Snackbar.LENGTH_LONG).show();
+
+            } else {
+                NoInternet.setVisibility(View.VISIBLE);
+                Snackbar.make(getView(), "No InterNet Please Turn On Mobile Data Or Hotspot", Snackbar.LENGTH_LONG).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     //---------------------Data From Server ---------------------------------//
     private  void  LoadStatedata(){
-
-        progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
-        progressDialog.show();
-
-
-        StringRequest stringrequest  = new StringRequest(Request.Method.GET, B02_URLData,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            if ((progressDialog != null) && progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                        } catch (final IllegalArgumentException e) {
-                            // Handle or log or ignore
-                        } catch (final Exception e) {
-                            // Handle or log or ignore
-                        } finally {
-
+        try {
+            progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
+            progressDialog.show();
+            StringRequest stringrequest = new StringRequest(Request.Method.GET, B02_URLData,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
                             try {
-                                if (!response.equals("[]")) {
-                                    JSONArray Sarray = new JSONArray(response);
-                                    for (int i = 0; i < Sarray.length(); i++) {
-                                        JSONObject J = Sarray.getJSONObject(i);
-                                        B01_C01_State_List sitem = new B01_C01_State_List(
-                                                J.getString("state"),
-                                                J.getString("id")
-                                        );
-                                        b01C01_state_lists.add(sitem);
-                                    }
-                                    state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getContext(), "ServiceCenter");
-                                    State_recyclerview.setAdapter(state_adapter);
-                                    State_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-                                } else {
-                                    Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
-                                    NodataFound(getContext(), "Currently We Don't Have City Name !..");
-
+                                if ((progressDialog != null) && progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
                                 }
+                            } catch (final IllegalArgumentException e) {
+                                // Handle or log or ignore
+                            } catch (final Exception e) {
+                                // Handle or log or ignore
+                            } finally {
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                try {
+                                    if (!response.equals("[]")) {
+                                        JSONArray Sarray = new JSONArray(response);
+                                        for (int i = 0; i < Sarray.length(); i++) {
+                                            JSONObject J = Sarray.getJSONObject(i);
+                                            B01_C01_State_List sitem = new B01_C01_State_List(
+                                                    J.getString("state"),
+                                                    J.getString("id")
+                                            );
+                                            b01C01_state_lists.add(sitem);
+                                        }
+                                        state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getActivity(), "ServiceCenter");
+                                        State_recyclerview.setAdapter(state_adapter);
+                                        State_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+                                    } else {
+                                        Toast.makeText(getActivity(), "nodata", Toast.LENGTH_SHORT).show();
+                                        NodataFound(getActivity(), "Currently We Don't Have City Name !..");
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                progressDialog = null;
                             }
-                            progressDialog = null;
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    }
-                });
-        stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringrequest);
+                        }
+                    });
+            stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+            requestQueue.add(stringrequest);
 
-
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
 

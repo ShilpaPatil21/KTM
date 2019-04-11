@@ -31,8 +31,8 @@ public class B02_CityName extends A00_ActivityBaseClass {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.b02_c02_cityname_activity);
-
-        if(CheckInternet.isInternetAvailable(this)) {
+        try {
+            if (CheckInternet.isInternetAvailable(this)) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
                 progressDialog = new ProgressDialog(this);
@@ -51,75 +51,79 @@ public class B02_CityName extends A00_ActivityBaseClass {
                 City_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
 
-                getSupportActionBar().setTitle(capitalize(state_name+ "  "+"City"));
+                getSupportActionBar().setTitle(capitalize(state_name + "  " + "City"));
 
                 b03City_lists = new ArrayList<>();
 
-               LoadCityData();
-        }else{
-            Toast.makeText(context,"No internet",Toast.LENGTH_LONG).show();
+                LoadCityData();
+            } else {
+                Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show();
+            }
+
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
     }
-
-
     private  void  LoadCityData(){
-
-        progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
-        progressDialog.show();
-        StringRequest stringrequest  = new StringRequest(Request.Method.GET, B03_URLData + Sid,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            if ((progressDialog != null) && progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                        } catch (final IllegalArgumentException e) {
-                            // Handle or log or ignore
-                        } catch (final Exception e) {
-                            // Handle or log or ignore
-                        } finally {
-
+    try {
+            progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
+            progressDialog.show();
+            StringRequest stringrequest = new StringRequest(Request.Method.GET, B03_URLData + Sid,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
                             try {
-                                if (!response.equals("[]")) {
-                                    JSONArray carray = new JSONArray(response);
-                                    for (int i = 0; i < carray.length(); i++) {
-
-                                        JSONObject c = carray.getJSONObject(i);
-
-                                        B02_C02_City_List citem = new B02_C02_City_List(
-                                                c.getString("city"),
-                                                c.getString("id")
-                                        );
-
-                                        b03City_lists.add(citem);
-                                    }
-                                    City_adapter = new B02_C02_CityAdapter(b03City_lists, getApplicationContext(), state_name, Sid, type);
-                                    City_recyclerview.setAdapter(City_adapter);
-                                } else {
-                                    NodataFound(context, "Currently We Don't Have City Name !..");
-
+                                if ((progressDialog != null) && progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
                                 }
+                            } catch (final IllegalArgumentException e) {
+                                // Handle or log or ignore
+                            } catch (final Exception e) {
+                                // Handle or log or ignore
+                            } finally {
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                try {
+                                    if (!response.equals("[]")) {
+                                        JSONArray carray = new JSONArray(response);
+                                        for (int i = 0; i < carray.length(); i++) {
+
+                                            JSONObject c = carray.getJSONObject(i);
+
+                                            B02_C02_City_List citem = new B02_C02_City_List(
+                                                    c.getString("city"),
+                                                    c.getString("id")
+                                            );
+
+                                            b03City_lists.add(citem);
+                                        }
+                                        City_adapter = new B02_C02_CityAdapter(b03City_lists, getApplicationContext(), state_name, Sid, type);
+                                        City_recyclerview.setAdapter(City_adapter);
+                                    } else {
+                                        NodataFound(context, "Currently We Don't Have City Name !..");
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                progressDialog = null;
                             }
-                            progressDialog = null;
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(B02_CityName.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(B02_CityName.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    }
-                });
-        stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringrequest);
-
+                        }
+                    });
+            stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringrequest);
+    }catch (Exception e){
+        Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+}
 
     }
     @Override

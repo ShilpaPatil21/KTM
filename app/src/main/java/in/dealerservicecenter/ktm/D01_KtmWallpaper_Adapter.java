@@ -49,11 +49,11 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final D01_KtmWallpaper_List d01_ktmWallpaper_list = d01_ktmWallpaper_lists.get(i);
 
-
+        try{
             viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(d01_ktmWallpaper_list.getPimg()))));
 
 
-        viewholder.PImage.setOnClickListener(new View.OnClickListener() {
+            viewholder.PImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
@@ -92,6 +92,9 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
                     }
                 }
             });
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
     @Override

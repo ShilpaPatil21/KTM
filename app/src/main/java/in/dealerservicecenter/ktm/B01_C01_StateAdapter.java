@@ -45,33 +45,35 @@ public class B01_C01_StateAdapter extends RecyclerView.Adapter<B01_C01_StateAdap
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
         final B01_C01_State_List stateList = stateLists.get(i);
+        try {
+            viewholder.TxtState.setText(capitalize(stateList.getStatename()));
+            viewholder.SlinearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    try {
+                        if (CheckInternet.isInternetAvailable(context)) //if connection available
+                        {
+                            Intent intent = new Intent(context, B02_CityName.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                            intent.putExtra("sid", stateList.getSid());
+                            intent.putExtra("state_name", stateList.getStatename());
+                            intent.putExtra("type", Type);
+                            context.startActivity(intent);
 
-        viewholder.TxtState.setText(capitalize(stateList.getStatename()));
-        viewholder.SlinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try {
-                    if(CheckInternet.isInternetAvailable(context)) //if connection available
-                    {
-                                Intent intent = new Intent(context, B02_CityName.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                                intent.putExtra("sid", stateList.getSid());
-                                intent.putExtra("state_name", stateList.getStatename());
-                                intent.putExtra("type", Type);
-                                context.startActivity(intent);
-
-                    }else{
-                        //no connection
-                        Toast.makeText(context, "No Internet Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //no connection
+                            Toast.makeText(context, "No Internet Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception ex) {
+                        Log.e("Log", String.valueOf(ex));
                     }
-                }catch (Exception ex){
-                    Log.e("Log", String.valueOf(ex));
-                }
 
-            }
-        });
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     public int getItemCount() {
