@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class D01_Wallpaper extends AppCompatActivity {
+public class D01_Wallpaper extends A00_ActivityBaseClass {
 
     List<D01_KtmWallpaper_List> d01_ktmWallpaper_lists;
     Context context = this;
@@ -166,12 +166,20 @@ public class D01_Wallpaper extends AppCompatActivity {
         recyclerView.setAdapter(d01_ktmWallpaper_adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
 
-        }catch (Exception ex){
-            Log.e("Images",ex.getMessage());
+        }catch (Exception e){
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
 
         }catch (Exception e){
-            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
     }
     /*------------------------ BACK BUTTON ----------------------------*/

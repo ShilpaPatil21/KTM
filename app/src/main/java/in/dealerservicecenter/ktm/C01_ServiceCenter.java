@@ -77,7 +77,11 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
                 Snackbar.make(getView(), "No InterNet Please Turn On Mobile Data Or Hotspot", Snackbar.LENGTH_LONG).show();
             }
         }catch (Exception e){
-            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
     }
 
@@ -129,8 +133,12 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
                     },
                     new Response.ErrorListener() {
                         @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        public void onErrorResponse(VolleyError e) {
+                            StackTraceElement[] trace = e.getStackTrace();
+                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            //Sending Mail
+                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
 
                         }
                     });
@@ -139,7 +147,11 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
             requestQueue.add(stringrequest);
 
         }catch (Exception e){
-            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
     }
 

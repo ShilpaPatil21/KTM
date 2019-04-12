@@ -56,9 +56,9 @@ public class B01_StateName extends A00_FragmentBaseClass {
                 progressDialog = new ProgressDialog(getActivity());
                 b01C01_state_lists = new ArrayList<>();
                 // NoInternet.findViewById(View.GONE);
-                String data = "";
+
                 //---------------------Data From Server Call---------------------------------//
-                Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+
 
 
                 handler = new Handler();
@@ -80,7 +80,11 @@ public class B01_StateName extends A00_FragmentBaseClass {
 
             }
         }catch (Exception e){
-            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
     }
 
@@ -129,8 +133,12 @@ public class B01_StateName extends A00_FragmentBaseClass {
                     },
                     new Response.ErrorListener() {
                         @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        public void onErrorResponse(VolleyError e) {
+                            StackTraceElement[] trace = e.getStackTrace();
+                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            //Sending Mail
+                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
 
                         }
                     });
@@ -138,7 +146,11 @@ public class B01_StateName extends A00_FragmentBaseClass {
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
             requestQueue.add(stringrequest);
         }catch (Exception e){
-            Toast.makeText(getActivity(), "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
 
     }

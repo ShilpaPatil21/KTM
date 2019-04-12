@@ -61,7 +61,11 @@ public class B02_CityName extends A00_ActivityBaseClass {
             }
 
         }catch (Exception e){
-            Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            StackTraceElement[] trace = e.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
         }
 
     }
@@ -113,8 +117,12 @@ public class B02_CityName extends A00_ActivityBaseClass {
                     },
                     new Response.ErrorListener() {
                         @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(B02_CityName.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        public void onErrorResponse(VolleyError e) {
+                            StackTraceElement[] trace = e.getStackTrace();
+                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            //Sending Mail
+                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
 
                         }
                     });
@@ -122,8 +130,12 @@ public class B02_CityName extends A00_ActivityBaseClass {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringrequest);
     }catch (Exception e){
-        Toast.makeText(context, "Error:-"+e.getMessage(), Toast.LENGTH_SHORT).show();
-}
+        StackTraceElement[] trace = e.getStackTrace();
+        System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+        //Sending Mail
+        Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+
+    }
 
     }
     @Override

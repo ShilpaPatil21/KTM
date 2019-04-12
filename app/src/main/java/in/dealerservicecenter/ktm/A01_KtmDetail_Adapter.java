@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Adapter.Viewholder>  {
-
+    public  String  MailData ="https://www.dealerservicecenter.in/api/send_error/?url=";
+    int MAXIMUM_TIMEOUT_IN_SECONDS = 20, MAXIMUM_RETRY_STRING_REQUEST = 3;
     private InterstitialAd mInterstitialAd;
     private List<A01_KtmDetail_List> a01DealerDetail_lists;
     private Context context;
@@ -107,8 +117,12 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
         });
         } catch (OutOfMemoryError e) {
             Toast.makeText(context, "Your Memory Is Full....", Toast.LENGTH_SHORT).show();
-        }catch (Exception e){
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }catch (Exception error){
+            StackTraceElement[] trace = error.getStackTrace();
+            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
+            //Sending Mail
+            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
+
         }
     }
     @Override
@@ -144,6 +158,41 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
         }
 
         return capMatcher.appendTail(capBuffer).toString();
+    }
+    public void  Send_Mail_Exception(String msg) {
+        if (CheckInternet.isInternetAvailable(context)) {
+            String url = null;
+            try {
+                // encode() method
+                System.out.println("URL after encoding :");
+                url = new String(MailData + URLEncoder.encode(msg.toLowerCase(), "UTF-8"));
+                Log.d("url exception", url);
+
+            } catch (Exception e) {
+                Log.d("url exception", e.getMessage());
+            } finally {
+                StringRequest stringrequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(context, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
+
+                RequestQueue requestQueue = Volley.newRequestQueue(context);
+                requestQueue.add(stringrequest);
+
+            }
+        }
     }
 
 }

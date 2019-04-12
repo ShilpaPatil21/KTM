@@ -4,10 +4,20 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.net.URLEncoder;
 import java.util.List;
 
 public class A00_FragmentBaseClass extends Fragment {
@@ -18,7 +28,7 @@ public class A00_FragmentBaseClass extends Fragment {
     int MAXIMUM_TIMEOUT_IN_SECONDS = 20, MAXIMUM_RETRY_STRING_REQUEST = 3;
 
     public   String B02_URLData = "https://www.dealerservicecenter.in/backend/api/get_state_list";
-
+    public  String  MailData ="https://www.dealerservicecenter.in/api/send_error/?url=";
     View NoInternet;
 
 
@@ -32,6 +42,41 @@ public class A00_FragmentBaseClass extends Fragment {
         t1.setText(Title_Nodata);
         back_btn.setVisibility(View.GONE);
 
+    }
+    public void  Send_Mail_Exception(String msg) {
+        if (CheckInternet.isInternetAvailable(getContext())) {
+            String url = null;
+            try {
+                // encode() method
+                System.out.println("URL after encoding :");
+                url = new String(MailData + URLEncoder.encode(msg.toLowerCase(), "UTF-8"));
+                Log.d("url exception", url);
+
+            } catch (Exception e) {
+                Log.d("url exception", e.getMessage());
+            } finally {
+                StringRequest stringrequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getActivity(), "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+                requestQueue.add(stringrequest);
+
+            }
+        }
     }
 
 
