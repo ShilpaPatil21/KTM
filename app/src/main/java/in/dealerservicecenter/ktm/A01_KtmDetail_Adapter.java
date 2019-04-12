@@ -72,47 +72,55 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
             viewholder.KtmRv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    } else {
+                    try {
+                        if (mInterstitialAd.isLoaded()) {
+                            mInterstitialAd.show();
+                        } else {
 
-                        Intent o = new Intent(context, A02_KtmSpecification.class);
-                        o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
-                        o.putExtra("kname", a01DealerDetail_list.getPName());
-                        context.startActivity(o);
-
-                    }
-
-                    mInterstitialAd.setAdListener(new AdListener() {
-                        @Override
-                        public void onAdLoaded() {
-                            // Code to be executed when an ad finishes loading.
-                        }
-
-                        @Override
-                        public void onAdFailedToLoad(int errorCode) {
-                            // Code to be executed when an ad request fails.
-                        }
-
-                        @Override
-                        public void onAdOpened() {
-                            // Code to be executed when the ad is displayed.
-                        }
-
-                        @Override
-                        public void onAdLeftApplication() {
-                            // Code to be executed when the user has left the app.
-                        }
-
-                        @Override
-                        public void onAdClosed() {
-                            // Code to be executed when the interstitial ad is closed.
                             Intent o = new Intent(context, A02_KtmSpecification.class);
                             o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
                             o.putExtra("kname", a01DealerDetail_list.getPName());
                             context.startActivity(o);
+
                         }
-                    });
+
+                        mInterstitialAd.setAdListener(new AdListener() {
+                            @Override
+                            public void onAdLoaded() {
+                                // Code to be executed when an ad finishes loading.
+                            }
+
+                            @Override
+                            public void onAdFailedToLoad(int errorCode) {
+                                // Code to be executed when an ad request fails.
+                            }
+
+                            @Override
+                            public void onAdOpened() {
+                                // Code to be executed when the ad is displayed.
+                            }
+
+                            @Override
+                            public void onAdLeftApplication() {
+                                // Code to be executed when the user has left the app.
+                            }
+
+                            @Override
+                            public void onAdClosed() {
+                                // Code to be executed when the interstitial ad is closed.
+                                Intent o = new Intent(context, A02_KtmSpecification.class);
+                                o.putExtra("kid", String.valueOf(a01DealerDetail_list.getPid()));
+                                o.putExtra("kname", a01DealerDetail_list.getPName());
+                                context.startActivity(o);
+                            }
+                        });
+                    }catch (Exception error){
+                        StackTraceElement[] trace = error.getStackTrace();
+                        System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
+                        //Sending Mail
+                        Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
+
+                    }
                 }
         });
         } catch (OutOfMemoryError e) {
