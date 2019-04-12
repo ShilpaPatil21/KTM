@@ -143,6 +143,7 @@ public class A01_KTM_Model extends Fragment {
 
     public void Add_Banner(){
         try {
+            mAdView.setVisibility(View.GONE);
                 AdView adView = new AdView(getContext());
                 adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
 

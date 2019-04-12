@@ -27,9 +27,10 @@
 
 
             <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ktmmodel">
+                android:paddingBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ktmmodel">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -38,6 +39,7 @@
                             android:layout_marginTop="10dp"
                             xmlns:ads="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/adView"
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"

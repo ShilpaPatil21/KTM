@@ -61,7 +61,7 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
             mInterstitialAd = new InterstitialAd(context);
             mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
             mInterstitialAd.loadAd(new AdRequest.Builder()
-                    .addTestDevice("A33EB03807D43E634CB44901B918BB0B")
+
                     .build());
             viewholder.TxtCity.setText(capitalize(cityList.getCityname()));
 
@@ -96,7 +96,7 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
                                     @Override
                                     public void onAdFailedToLoad(int errorCode) {
                                         // Code to be executed when an ad request fails.
-                                        Toast.makeText(context, "error Ads" + errorCode, Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(context, "error Ads" + errorCode, Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
