@@ -61,6 +61,8 @@ public class B01_StateName extends A00_FragmentBaseClass {
 
 
 
+
+
                 handler = new Handler();
                 handler.post(new Runnable() {
                     public void run() {
@@ -93,7 +95,7 @@ public class B01_StateName extends A00_FragmentBaseClass {
         try {
             progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
             progressDialog.show();
-            StringRequest stringrequest = new StringRequest(Request.Method.GET, B02_URLData,
+            StringRequest stringrequest = new StringRequest(Request.Method.POST, B02_URLData,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
