@@ -111,6 +111,7 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 
     private  void  LoadDealerDetailData(){
     try {
+        if (!B03_C03_DealerServicecenter_detail.this.isFinishing()) {
             progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
             progressDialog.show();
 
@@ -248,15 +249,16 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
                         @Override
                         public void onErrorResponse(VolleyError e) {
                             StackTraceElement[] trace = e.getStackTrace();
-                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
                             //Sending Mail
-                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
 
                         }
                     });
             stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringrequest);
+        }
     }catch (Exception e){
         StackTraceElement[] trace = e.getStackTrace();
         System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());

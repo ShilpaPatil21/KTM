@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class B02_CityName extends A00_ActivityBaseClass {
-
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,16 @@ public class B02_CityName extends A00_ActivityBaseClass {
 
                 b03City_lists = new ArrayList<>();
 
-                LoadCityData();
+                handler = new Handler();
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            LoadCityData();
+                        } catch (Exception e) {
+                            System.err.println("Error in catch is " + e);
+                        }
+                    }
+                });
             } else {
                 Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show();
             }
@@ -71,6 +81,7 @@ public class B02_CityName extends A00_ActivityBaseClass {
     }
     private  void  LoadCityData(){
     try {
+        if (!B02_CityName.this.isFinishing()) {
             progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
             progressDialog.show();
             StringRequest stringrequest = new StringRequest(Request.Method.GET, B03_URLData + Sid,
@@ -119,9 +130,9 @@ public class B02_CityName extends A00_ActivityBaseClass {
                         @Override
                         public void onErrorResponse(VolleyError e) {
                             StackTraceElement[] trace = e.getStackTrace();
-                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
                             //Sending Mail
-                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
 
 
                         }
@@ -129,6 +140,7 @@ public class B02_CityName extends A00_ActivityBaseClass {
             stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringrequest);
+        }
     }catch (Exception e){
         StackTraceElement[] trace = e.getStackTrace();
         System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());

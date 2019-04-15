@@ -88,64 +88,65 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
     //---------------------Data From Server ---------------------------------//
     private  void  LoadStatedata(){
         try {
-            progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
-            progressDialog.show();
-            StringRequest stringrequest = new StringRequest(Request.Method.GET, B02_URLData,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                if ((progressDialog != null) && progressDialog.isShowing()) {
-                                    progressDialog.dismiss();
-                                }
-                            } catch (final IllegalArgumentException e) {
-                                // Handle or log or ignore
-                            } catch (final Exception e) {
-                                // Handle or log or ignore
-                            } finally {
-
+            if (!getActivity().isFinishing()) {
+                progressDialog.setMessage("Please Wait Wil Data Fetch From Server");
+                progressDialog.show();
+                StringRequest stringrequest = new StringRequest(Request.Method.GET, B02_URLData,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
                                 try {
-                                    if (!response.equals("[]")) {
-                                        JSONArray Sarray = new JSONArray(response);
-                                        for (int i = 0; i < Sarray.length(); i++) {
-                                            JSONObject J = Sarray.getJSONObject(i);
-                                            B01_C01_State_List sitem = new B01_C01_State_List(
-                                                    J.getString("state"),
-                                                    J.getString("id")
-                                            );
-                                            b01C01_state_lists.add(sitem);
-                                        }
-                                        state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getActivity(), "ServiceCenter");
-                                        State_recyclerview.setAdapter(state_adapter);
-                                        State_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-                                    } else {
-                                        Toast.makeText(getActivity(), "nodata", Toast.LENGTH_SHORT).show();
-                                        NodataFound(getActivity(), "Currently We Don't Have City Name !..");
-
+                                    if ((progressDialog != null) && progressDialog.isShowing()) {
+                                        progressDialog.dismiss();
                                     }
+                                } catch (final IllegalArgumentException e) {
+                                    // Handle or log or ignore
+                                } catch (final Exception e) {
+                                    // Handle or log or ignore
+                                } finally {
 
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                                    try {
+                                        if (!response.equals("[]")) {
+                                            JSONArray Sarray = new JSONArray(response);
+                                            for (int i = 0; i < Sarray.length(); i++) {
+                                                JSONObject J = Sarray.getJSONObject(i);
+                                                B01_C01_State_List sitem = new B01_C01_State_List(
+                                                        J.getString("state"),
+                                                        J.getString("id")
+                                                );
+                                                b01C01_state_lists.add(sitem);
+                                            }
+                                            state_adapter = new B01_C01_StateAdapter(b01C01_state_lists, getActivity(), "ServiceCenter");
+                                            State_recyclerview.setAdapter(state_adapter);
+                                            State_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+                                        } else {
+                                            Toast.makeText(getActivity(), "nodata", Toast.LENGTH_SHORT).show();
+                                            NodataFound(getActivity(), "Currently We Don't Have City Name !..");
+
+                                        }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    progressDialog = null;
                                 }
-                                progressDialog = null;
                             }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError e) {
-                            StackTraceElement[] trace = e.getStackTrace();
-                            System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
-                            //Sending Mail
-                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError e) {
+                                StackTraceElement[] trace = e.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                //Sending Mail
+                                Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
 
 
-                        }
-                    });
-            stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-            requestQueue.add(stringrequest);
-
+                            }
+                        });
+                stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
+                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+                requestQueue.add(stringrequest);
+            }
         }catch (Exception e){
             StackTraceElement[] trace = e.getStackTrace();
             System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
