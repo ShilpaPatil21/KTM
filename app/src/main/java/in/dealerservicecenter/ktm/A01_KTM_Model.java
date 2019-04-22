@@ -32,14 +32,11 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class A01_KTM_Model extends Fragment {
+public class A01_KTM_Model extends A00_FragmentBaseClass {
     List<A01_KtmDetail_List> productList;
     private AdView mAdView;
-   // Context context = this;
-    //the recyclerview
     RecyclerView recyclerView;
-    public  String  MailData ="https://www.dealerservicecenter.in/api/send_error/?url=";
-    int MAXIMUM_TIMEOUT_IN_SECONDS = 20, MAXIMUM_RETRY_STRING_REQUEST = 3;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,7 +57,7 @@ public class A01_KTM_Model extends Fragment {
                 //getting the recyclerview from xml
                 recyclerView = (RecyclerView) this.getView().findViewById(R.id.ktmmodel);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
                 mAdView = getView().findViewById(R.id.adView);
                 //-------------- BANNER ADD ------------------------//
@@ -126,7 +123,7 @@ public class A01_KTM_Model extends Fragment {
 
                 //creating recyclerview adapter
 
-                A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(getContext(), productList);
+                A01_KtmDetail_Adapter adapter = new A01_KtmDetail_Adapter(getActivity(), productList);
                 //setting adapter to recyclerview
                 recyclerView.setAdapter(adapter);
         }catch (Exception error){
@@ -142,7 +139,7 @@ public class A01_KTM_Model extends Fragment {
     public void Add_Banner(){
         try {
             mAdView.setVisibility(View.GONE);
-                AdView adView = new AdView(getContext());
+                AdView adView = new AdView(getActivity());
                 adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
 
                 AdRequest adRequest = new AdRequest.Builder()
@@ -187,37 +184,6 @@ public class A01_KTM_Model extends Fragment {
             System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
         }
     }
-    public void  Send_Mail_Exception(String msg) {
-        if (CheckInternet.isInternetAvailable(getActivity())) {
-            String url = null;
-            try {
-                // encode() method
-                System.out.println("URL after encoding :");
-                url = new String(MailData + URLEncoder.encode(msg.toLowerCase(), "UTF-8"));
-                Log.d("url exception", url);
 
-            } catch (Exception e) {
-                Log.d("url exception", e.getMessage());
-            } finally {
-                StringRequest stringrequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError e) {
-                                StackTraceElement[] trace = e.getStackTrace();
-                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-                            }
-                        });
-                stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-                requestQueue.add(stringrequest);
-
-            }
-        }
-    }
 
 }

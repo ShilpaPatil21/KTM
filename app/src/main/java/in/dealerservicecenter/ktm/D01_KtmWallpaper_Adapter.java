@@ -61,16 +61,11 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
 
         try{
             viewholder.PImage.setImageDrawable(context.getResources().getDrawable(Integer.parseInt(String.valueOf(d01_ktmWallpaper_list.getPimg()))));
-
-
             viewholder.PImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
                         ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
-
-
                         String fnm = d01_ktmWallpaper_list.getPName(); //  this is image file name
                         String PACKAGE_NAME = context.getPackageName();
                         int imgId = context.getResources().getIdentifier(PACKAGE_NAME+":drawable/"+fnm , null, null);
@@ -129,10 +124,6 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
             //Txtname = (TextView) itemView.findViewById(R.id.textViewTitle);
             PImage = (ImageView) itemView.findViewById(R.id.imageView);
            // KtmRv = (RelativeLayout) itemView.findViewById(R.id.ktmlv);
-
-
-
-
         }
     }
     //Convert First Letter Into Captial
@@ -175,7 +166,6 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringrequest);
-
             }
         }
     }
