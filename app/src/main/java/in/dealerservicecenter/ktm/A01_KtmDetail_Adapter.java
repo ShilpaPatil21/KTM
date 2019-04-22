@@ -53,8 +53,8 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final A01_KtmDetail_List a01DealerDetail_list = a01DealerDetail_lists.get(i);
         try{
+            final A01_KtmDetail_List a01DealerDetail_list = a01DealerDetail_lists.get(i);
             MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
             mInterstitialAd = new InterstitialAd(context);
             mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
@@ -190,12 +190,12 @@ public class A01_KtmDetail_Adapter extends RecyclerView.Adapter<A01_KtmDetail_Ad
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                StackTraceElement[] trace = error.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
 
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringrequest);
 

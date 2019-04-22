@@ -27,6 +27,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class C01_ServiceCenter extends A00_FragmentBaseClass {
     private Handler handler;
     @Nullable
@@ -135,11 +137,14 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError e) {
-                                StackTraceElement[] trace = e.getStackTrace();
-                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-                                //Sending Mail
-                                Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-
+                                if(e.getMessage()== NULL){
+                                    Toast.makeText(getActivity(), "Failed To Retrieve In Data", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    StackTraceElement[] trace = e.getStackTrace();
+                                    System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                    //Sending Mail
+                                    Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                }
 
                             }
                         });
@@ -155,9 +160,6 @@ public class C01_ServiceCenter extends A00_FragmentBaseClass {
 
         }
     }
-
-
-
 }
 
 

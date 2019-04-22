@@ -44,7 +44,7 @@ public class A00_FragmentBaseClass extends Fragment {
 
     }
     public void  Send_Mail_Exception(String msg) {
-        if (CheckInternet.isInternetAvailable(getContext())) {
+        if (CheckInternet.isInternetAvailable(getActivity())) {
             String url = null;
             try {
                 // encode() method
@@ -59,15 +59,13 @@ public class A00_FragmentBaseClass extends Fragment {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-
-
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getActivity(), "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                                StackTraceElement[] trace = error.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));

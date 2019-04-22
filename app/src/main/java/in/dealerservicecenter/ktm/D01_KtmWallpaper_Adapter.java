@@ -167,13 +167,12 @@ public class D01_KtmWallpaper_Adapter extends RecyclerView.Adapter<D01_KtmWallpa
                         },
                         new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            public void onErrorResponse(VolleyError e) {
+                                StackTraceElement[] trace = e.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringrequest);
 

@@ -35,12 +35,7 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
     public B03_C03_DealerServiceCenterDetail_Adapter(List<B03_C03_DealerServiceCenterDetail_List> b04DealerDetail_list, Context context) {
         this.b04DealerDetail_lists = b04DealerDetail_list;
         this.context = context;
-
-
     }
-
-
-
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -51,8 +46,8 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final B03_C03_DealerServiceCenterDetail_List b04DealerDetail_list = b04DealerDetail_lists.get(i);
         try {
+            final B03_C03_DealerServiceCenterDetail_List b04DealerDetail_list = b04DealerDetail_lists.get(i);
             viewholder.Txtname.setText(capitalize(b04DealerDetail_list.getBname()));
             viewholder.Txtadd.setText(capitalize(b04DealerDetail_list.getBadd()) + "   " + b04DealerDetail_list.getPincode());
             viewholder.Txtcontact.setText(capitalize(b04DealerDetail_list.getBcontact_person() + " -" + b04DealerDetail_list.getBcontact()));
@@ -79,9 +74,6 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
     public  class  Viewholder extends  RecyclerView.ViewHolder{
 
         public TextView Txtname,Txtadd,Txtcontact,Txtslug,Txtpin,Txtemail;
-
-
-
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             Txtname = (TextView) itemView.findViewById(R.id.txtname);
@@ -89,11 +81,6 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
             Txtcontact = (TextView) itemView.findViewById(R.id.txtcontect);
             Txtslug = (TextView) itemView.findViewById(R.id.txtslug);
             Txtemail = (TextView) itemView.findViewById(R.id.txtemail);
-
-
-
-
-
         }
     }
     //Convert First Letter Into Captial
@@ -128,16 +115,14 @@ public class B03_C03_DealerServiceCenterDetail_Adapter extends RecyclerView.Adap
                         },
                         new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            public void onErrorResponse(VolleyError e) {
+                                StackTraceElement[] trace = e.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringrequest);
-
             }
         }
     }

@@ -32,6 +32,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
     private Handler handler;
     @Override
@@ -39,13 +41,11 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.b03_c03_dealer_detail_activity);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        try{
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        try {
-            mAdView1 = findViewById(R.id.adView1); // Add
 
-            nodata = findViewById(R.id.nodata);
 
             Intent i = getIntent();
 
@@ -54,6 +54,8 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
             state_name = capitalize(i.getStringExtra("state_name"));
             cityname = capitalize(i.getStringExtra("cityname"));
             type = capitalize(i.getStringExtra("type"));
+            mAdView1 = findViewById(R.id.adView1); // Add
+            nodata = findViewById(R.id.nodata);
             HttpsTrustManager.allowAllSSL(); //SSl
 
             Dealer_recyclerview = (RecyclerView) findViewById(R.id.dealerdata);
@@ -96,18 +98,7 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
 
         }
     }
-    // FOR SEARCHING THE VALUE
-    private void filter(String text) {
-        ArrayList<B03_C03_DealerServiceCenterDetail_List> filteredList = new ArrayList<>();
 
-        for (B03_C03_DealerServiceCenterDetail_List sitem : b04DealerDetail_lists) {
-            if (sitem.getBname().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(sitem);
-            }
-        }
-        Dealer_adapter = new B03_C03_DealerServiceCenterDetail_Adapter(filteredList, getApplicationContext());
-        Dealer_recyclerview.setAdapter(Dealer_adapter);
-    }
 
     private  void  LoadDealerDetailData(){
     try {
@@ -248,11 +239,15 @@ public class B03_C03_DealerServicecenter_detail extends A00_ActivityBaseClass {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError e) {
-                            StackTraceElement[] trace = e.getStackTrace();
-                            System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-                            //Sending Mail
-                            Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                            if(e.getMessage()== NULL){
+                                Toast.makeText(context, "Failed To Retrieve In Data", Toast.LENGTH_SHORT).show();
+                            }else {
 
+                                StackTraceElement[] trace = e.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                //Sending Mail
+                                Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                            }
                         }
                     });
             stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));

@@ -55,8 +55,8 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
-        final B02_C02_City_List cityList = cityLists.get(i);
         try {
+            final B02_C02_City_List cityList = cityLists.get(i);
             MobileAds.initialize(context, "ca-app-pub-4662457729112553~5720713624");
             mInterstitialAd = new InterstitialAd(context);
             mInterstitialAd.setAdUnitId("ca-app-pub-4662457729112553/9847660890");
@@ -148,8 +148,6 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
             Send_Mail_Exception("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+e.getMessage());
 
         }
-
-
     }
     @Override
     public int getItemCount() {
@@ -201,12 +199,11 @@ public class B02_C02_CityAdapter extends RecyclerView.Adapter<B02_C02_CityAdapte
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                                StackTraceElement[] trace = error.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringrequest);
 

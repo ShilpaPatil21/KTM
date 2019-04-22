@@ -116,7 +116,8 @@ public class A00_ActivityBaseClass extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(A00_ActivityBaseClass.this, "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                StackTraceElement[] trace = error.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName()+" Line:-"+trace[0].getLineNumber()+" Error:- "+error.getMessage());
 
                             }
                         });

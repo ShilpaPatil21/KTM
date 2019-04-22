@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class B01_StateName extends A00_FragmentBaseClass {
     private Handler handler;
@@ -122,7 +125,7 @@ public class B01_StateName extends A00_FragmentBaseClass {
                                             State_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
                                         } else {
                                             NodataFound(getActivity(), "Currently We Don't Have City Name !..");
-                                            // Toast.makeText(getContext(), "nodata", Toast.LENGTH_SHORT).show();
+
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -134,11 +137,14 @@ public class B01_StateName extends A00_FragmentBaseClass {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError e) {
-                                StackTraceElement[] trace = e.getStackTrace();
-                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-                                //Sending Mail
-                                Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
-
+                                if(e.getMessage()== NULL){
+                                    Toast.makeText(getActivity(), "Failed To Retrieve In Data", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    StackTraceElement[] trace = e.getStackTrace();
+                                    System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                    //Sending Mail
+                                    Send_Mail_Exception("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
+                                }
 
                             }
                         });

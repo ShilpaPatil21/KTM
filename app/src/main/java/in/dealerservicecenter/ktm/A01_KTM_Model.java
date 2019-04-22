@@ -40,8 +40,6 @@ public class A01_KTM_Model extends Fragment {
     RecyclerView recyclerView;
     public  String  MailData ="https://www.dealerservicecenter.in/api/send_error/?url=";
     int MAXIMUM_TIMEOUT_IN_SECONDS = 20, MAXIMUM_RETRY_STRING_REQUEST = 3;
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -205,19 +203,16 @@ public class A01_KTM_Model extends Fragment {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-
-
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getActivity(), "Volley Error - " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            public void onErrorResponse(VolleyError e) {
+                                StackTraceElement[] trace = e.getStackTrace();
+                                System.out.println("Ktm App :- " + trace[0].getFileName() + " Line:-" + trace[0].getLineNumber() + " Error:- " + e.getMessage());
                             }
                         });
                 stringrequest.setRetryPolicy(new DefaultRetryPolicy(MAXIMUM_TIMEOUT_IN_SECONDS * 1000, MAXIMUM_RETRY_STRING_REQUEST, 1.0f));
-
                 RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
                 requestQueue.add(stringrequest);
 
